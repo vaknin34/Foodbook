@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodbook">
         <activity
+            android:name=".activites.CreatePost"
+            android:exported="false" />
+        <activity
             android:name=".activites.HomePage"
             android:exported="false" />
         <activity

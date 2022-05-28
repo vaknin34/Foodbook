@@ -12,8 +12,8 @@ public class FirebaseStorageManager {
     // Create a Cloud Storage reference from the app
     static StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
-    public void uploadImage(String writer, String dish_name, byte[] image){
-        StorageReference dishRef = storageRef.child(writer + dish_name);
+    public static void uploadImage(String image_path, byte[] image){
+        StorageReference dishRef = storageRef.child(image_path);
         dishRef.putBytes(image);
     }
 
