@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Foodbook</string>
     <string name="user">user</string>
+    <string name="DbName">posts</string>
 </resources>
