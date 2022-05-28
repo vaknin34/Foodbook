@@ -1,4 +1,4 @@
-package adapters;
+package com.example.foodbook.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,13 +10,13 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodbook.R;
+import com.example.foodbook.databases.FirebaseStorageManager;
+import com.example.foodbook.models.Post;
 
 import java.util.List;
 
-import databases.FirebaseStorageManager;
-import models.Post;
 
-class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.PostViewHolder> {
+public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.PostViewHolder> {
 
     class PostViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvWriter;

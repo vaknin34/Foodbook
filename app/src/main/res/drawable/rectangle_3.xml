@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- drawable/rectangle_3.xml -->
-<vector
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="373dp"
     android:height="388dp"
     android:viewportWidth="373"
-    android:viewportHeight="388"
-    >
+    android:viewportHeight="388">
 
     <group>
 

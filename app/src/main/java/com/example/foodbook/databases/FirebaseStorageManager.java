@@ -1,4 +1,4 @@
-package databases;
+package com.example.foodbook.databases;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

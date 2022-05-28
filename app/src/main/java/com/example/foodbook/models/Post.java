@@ -1,4 +1,4 @@
-package models;
+package com.example.foodbook.models;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

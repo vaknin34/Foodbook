@@ -1,15 +1,15 @@
-package repositories;
+package com.example.foodbook.repositories;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.foodbook.databases.PostDao;
+import com.example.foodbook.databases.PostFirebaseDB;
+import com.example.foodbook.databases.PostRoomDatabase;
+import com.example.foodbook.models.Post;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import databases.PostDao;
-import databases.PostFirebaseDB;
-import databases.PostRoomDatabase;
-import models.Post;
 
 public class PostsRepository {
     private PostDao post_dao;

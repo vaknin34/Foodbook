@@ -1,16 +1,15 @@
-package databases;
+package com.example.foodbook.databases;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.foodbook.models.Post;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import models.Post;
 
 public class PostFirebaseDB {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();

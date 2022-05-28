@@ -1,12 +1,14 @@
-package databases;
+package com.example.foodbook.databases;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.example.foodbook.models.Post;
+
 import java.util.List;
-import models.Post;
 
 @Dao
 public interface PostDao {

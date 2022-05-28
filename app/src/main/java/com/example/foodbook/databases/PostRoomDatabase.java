@@ -1,12 +1,12 @@
-package databases;
+package com.example.foodbook.databases;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.foodbook.MyApplication;
 import com.example.foodbook.R;
-
-import models.Post;
+import com.example.foodbook.models.Post;
 
 @Database(entities = {Post.class}, version = 1)
 public abstract class PostRoomDatabase extends RoomDatabase {

@@ -1,12 +1,12 @@
-package viewmodels;
+package com.example.foodbook.viewmodels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.List;
+import com.example.foodbook.models.Post;
+import com.example.foodbook.repositories.PostsRepository;
 
-import models.Post;
-import repositories.PostsRepository;
+import java.util.List;
 
 public class PostViewModel extends ViewModel {
     private LiveData<List<Post>> posts;
