@@ -9,6 +9,8 @@ public class Post {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
+    @ColumnInfo(name = "dish name")
+    private String dish_name;
     @ColumnInfo(name = "Writer name")
     private String writer;
     @ColumnInfo(name = "date post was written")
@@ -25,13 +27,22 @@ public class Post {
 
     public Post() { }
 
-    public Post(String writer, String date, String ingredients, String recipe, String image_firebase_path, int likes) {
+    public Post(String dish_name, String writer, String date, String ingredients, String recipe, String image_firebase_path, int likes) {
+        this.dish_name = dish_name;
         this.writer = writer;
         this.date = date;
         this.ingredients = ingredients;
         this.recipe = recipe;
         this.image_firebase_path = image_firebase_path;
         this.likes = likes;
+    }
+
+    public String getDish_name() {
+        return dish_name;
+    }
+
+    public void setDish_name(String dish_name) {
+        this.dish_name = dish_name;
     }
 
     public void setId(int id) {

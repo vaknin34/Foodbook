@@ -2,4 +2,7 @@
     <string name="app_name">Foodbook</string>
     <string name="user">user</string>
     <string name="DbName">posts</string>
+    <string name="foodbook">foodbook</string>
+    <string name="todo">TODO</string>
+    <string name="post_a_dish">Post a dish</string>
 </resources>
