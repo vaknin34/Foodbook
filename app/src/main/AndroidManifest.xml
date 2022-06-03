@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodbook">
         <activity
-            android:name=".activites.CreatePost"
+            android:name=".activities.CreatePost"
             android:exported="false" />
         <activity
-            android:name=".activites.HomePage"
+            android:name=".activities.HomePage"
             android:exported="false" />
         <activity
-            android:name=".activites.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

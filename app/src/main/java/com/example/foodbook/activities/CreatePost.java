@@ -1,4 +1,4 @@
-package com.example.foodbook.activites;
+package com.example.foodbook.activities;
 
 import android.app.Activity;
 import android.content.Intent;
