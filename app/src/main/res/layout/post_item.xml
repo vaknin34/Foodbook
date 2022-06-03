@@ -59,7 +59,7 @@
             tools:ignore="DuplicateIds" />
 
         <ImageView
-            android:id="@+id/ivDishImage"
+            android:id="@+id/imageView6"
             android:layout_width="match_parent"
             android:layout_height="244dp"
             app:srcCompat="@drawable/rectangle_3" />
