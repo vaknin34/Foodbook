@@ -96,7 +96,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/ivDishImage"
             android:layout_width="match_parent"
             android:layout_height="235dp"
             tools:srcCompat="@tools:sample/avatars" />
