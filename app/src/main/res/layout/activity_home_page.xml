@@ -35,11 +35,39 @@
             android:id="@+id/title"
             android:layout_width="29dp"
             android:layout_height="match_parent"
+<<<<<<< HEAD
             android:layout_weight="3"
             android:text="@string/foodbook"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="48sp" />
+=======
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/foodbook" />
+
+            <Button
+                android:id="@+id/post_dish_btn"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="3"
+                android:backgroundTint="#3F51B5"
+                android:fontFamily="serif"
+                android:padding="14px"
+                android:text="@string/post_a_dish"
+                android:textColor="#050505"
+                android:textSize="16sp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+>>>>>>> parent of d45e091 (Revert "view home page")
 
         <ImageView
             android:id="@+id/imageView2"
