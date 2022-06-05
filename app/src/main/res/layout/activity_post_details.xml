@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#00BCD4"
+    tools:context=".activites.PostDetails">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="803dp">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
-            tools:context=".CreateAccountPrivate">
+            android:background="@color/white">
 
             <RelativeLayout
-                android:id="@+id/topPageClientRegister"
+                android:id="@+id/top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -27,7 +34,7 @@
 
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/etDish_name"
                     android:layout_width="wrap_content"
                     android:layout_height="98dp"
                     android:layout_alignParentStart="true"
@@ -40,7 +47,6 @@
                     android:layout_marginEnd="211dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="@string/dish_name"
-                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="35sp"
                     app:lineHeight="34sp" />
@@ -48,10 +54,10 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/fieldsClientRegister"
+                android:id="@+id/field"
                 android:layout_width="match_parent"
-                android:layout_height="803dp"
-                android:layout_below="@id/topPageClientRegister"
+                android:layout_height="731dp"
+                android:layout_below="@id/top"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="0dp"
@@ -93,7 +99,7 @@
                     android:textColor="#000000"
                     android:textSize="15sp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/etWriter"
                     android:layout_width="147dp"
                     android:layout_height="wrap_content"
@@ -106,9 +112,10 @@
                     android:layout_marginTop="-2dp"
                     android:layout_marginEnd="208dp"
                     android:background="@drawable/empty_rectangle"
-                    android:paddingStart="20dp" />
+                    android:paddingStart="20dp"
+                    android:textAlignment="viewStart" />
 
-                <EditText
+                <TextView
                     android:id="@+id/etDate"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
@@ -141,7 +148,7 @@
                     android:textColor="#000000"
                     android:textSize="15sp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/etIngredients"
                     android:layout_width="wrap_content"
                     android:layout_height="114dp"
@@ -177,7 +184,7 @@
                     android:textColor="#000000"
                     android:textSize="15sp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/etRecipe"
                     android:layout_width="wrap_content"
                     android:layout_height="161dp"
@@ -201,10 +208,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="433dp"
                     android:layout_marginEnd="78dp"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    app:srcCompat="@drawable/chefhat" />
 
             </RelativeLayout>
 
         </RelativeLayout>
     </ScrollView>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

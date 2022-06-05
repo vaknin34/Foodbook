@@ -10,10 +10,13 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodbook.R;
+import com.example.foodbook.activites.PostDetails;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.models.Post;
 
 import java.util.List;
+
+import interfaces.ItemClickInterface;
 
 
 public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.PostViewHolder> {
@@ -27,25 +30,40 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
         private final TextView tvLikes;
         private final ImageView ivImageFromFireBase;
 
-        private PostViewHolder(View itemView) {
+        private PostViewHolder(View itemView, ItemClickInterface itemClickInterface) {
             super(itemView);
             tvWriter = itemView.findViewById(R.id.tvWriterName);
             tvDishName = itemView.findViewById(R.id.tvDishName);
             tvDate = itemView.findViewById(R.id.tvDate);
             tvLikes = itemView.findViewById(R.id.tvLikes);
             ivImageFromFireBase = itemView.findViewById(R.id.ivDishImage);
+
+            itemView.setOnClickListener(view -> {
+                if(itemClickInterface != null){
+                    int position = getAdapterPosition();
+
+                    if(position != RecyclerView.NO_POSITION){
+                        itemClickInterface.onItemClick(position);
+                    }
+                }
+            });
         }
     }
 
     private final LayoutInflater mInflater;
     private List<Post> posts;
+    private ItemClickInterface itemClickInterface;
 
-    public PostsListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+
+    public PostsListAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
+        itemClickInterface = (ItemClickInterface) context;
+    }
 
     @Override
     public PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.post_item, parent, false);
-        return new PostViewHolder(itemView);
+        return new PostViewHolder(itemView, itemClickInterface);
     }
 
     @Override
