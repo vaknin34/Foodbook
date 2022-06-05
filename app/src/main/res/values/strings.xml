@@ -5,4 +5,5 @@
     <string name="foodbook">foodbook</string>
     <string name="todo">TODO</string>
     <string name="post_a_dish">Post a dish</string>
+    <string name="post_new_recipe">Post New Recipe</string>
 </resources>

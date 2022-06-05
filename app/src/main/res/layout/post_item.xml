@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="6dp"
-    android:background="#FFFFFF"
-    >
+    android:background="@android:color/white" >
 
     <!-- Rectangle 37 -->
     <View
@@ -39,6 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
                 android:text="Writer Name"
                 android:textAlignment="center" />
 
@@ -47,6 +47,7 @@
                 android:layout_width="138dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
                 android:text="PublishDate"
                 android:textAlignment="center" />
         </LinearLayout>
@@ -73,22 +74,26 @@
                 android:id="@+id/tvDishName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="8"
+                android:fontFamily="sans-serif-medium"
                 android:text="Dish Name" />
 
             <TextView
                 android:id="@+id/tvLikes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.2"
+                android:fontFamily="sans-serif-medium"
                 android:text="Likes"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="2dp"
                 android:layout_height="28dp"
                 android:layout_weight="1"
+                android:layout_marginRight="20dp"
                 app:srcCompat="@drawable/heart" />
 
             <!-- ico-/-24-/-actions-/-heart -->

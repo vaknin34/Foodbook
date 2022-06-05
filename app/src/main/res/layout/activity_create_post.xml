@@ -1,65 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:backgroundTint="#00BCD4"
-    tools:context=".activites.CreatePost">
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView2"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Create Post"
-            android:textSize="60sp" />
+            android:layout_height="match_parent"
+            tools:context=".CreateAccountPrivate"
+            android:background="@color/white">
 
-        <EditText
-            android:id="@+id/etDishName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter Dish Name here..."
-            android:inputType="textPersonName" />
+            <RelativeLayout
+                android:id="@+id/topPageClientRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/etRecipe"
-            android:layout_width="match_parent"
-            android:layout_height="205dp"
-            android:ems="10"
-            android:hint="Enter Recipe Here..."
-            android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/etIngredients"
-            android:layout_width="match_parent"
-            android:layout_height="137dp"
-            android:ems="10"
-            android:hint="Enter ingredients here..."
-            android:inputType="textPersonName" />
+                <ImageView
+                    android:id="@+id/circleRegisterClient"
+                    android:layout_width="match_parent"
+                    android:layout_height="186dp"
+                    android:layout_marginTop="-30dp"
+                    app:srcCompat="@drawable/create_post_header" />
 
-        <ImageView
-            android:id="@+id/ivUploadDishPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="208dp"
-            android:clickable="true"
-            app:srcCompat="@android:drawable/ic_menu_upload" />
 
-        <Button
-            android:id="@+id/post_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#3F51B5"
-            android:text="Post it" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="98dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="211dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/post_new_recipe"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="35sp"
+                    app:lineHeight="34sp" />
 
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/fieldsClientRegister"
+                android:layout_width="match_parent"
+                android:layout_height="573dp"
+                android:layout_below="@id/topPageClientRegister"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp">
+
+                <TextView
+                    android:id="@+id/dish_name"
+                    android:layout_width="121dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="237dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="top"
+                    android:text="Dish Name"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/etDishName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dish_name"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginLeft="56dp"
+                    android:layout_marginTop="-2dp"
+                    android:layout_marginEnd="54dp"
+                    android:background="@drawable/empty_rectangle"
+                    android:paddingStart="20dp" />
+
+                <TextView
+                    android:id="@+id/ingredients"
+                    android:layout_width="139dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dish_name"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="57dp"
+                    android:layout_marginLeft="57dp"
+                    android:layout_marginTop="46dp"
+                    android:layout_marginEnd="221dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="top"
+                    android:text="Ingredients"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/etIngredients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="114dp"
+                    android:layout_below="@+id/etDishName"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginLeft="56dp"
+                    android:layout_marginTop="29dp"
+                    android:layout_marginEnd="54dp"
+                    android:background="@drawable/empty_rectangle"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="20dp" />
+
+                <TextView
+                    android:id="@+id/recipe"
+                    android:layout_width="161dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ingredients"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="61dp"
+                    android:layout_marginLeft="61dp"
+                    android:layout_marginTop="122dp"
+                    android:layout_marginEnd="193dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:text="Recipe"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/etRecipe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="161dp"
+                    android:layout_below="@+id/etIngredients"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginLeft="56dp"
+                    android:layout_marginTop="33dp"
+                    android:layout_marginEnd="54dp"
+                    android:background="@drawable/empty_rectangle"
+                    android:inputType="phone"
+                    android:paddingStart="20dp" />
+
+                <TextView
+                    android:id="@+id/upload_photo"
+                    android:layout_width="161dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ingredients"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="326dp"
+                    android:layout_marginEnd="194dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:text="Upload Dish Photo"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/ivUploadDishPhoto"
+                    android:layout_width="54dp"
+                    android:layout_height="46dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="413dp"
+                    android:layout_marginEnd="164dp"
+                    android:clickable="true"
+                    app:srcCompat="@android:drawable/ic_menu_upload" />
+
+                <Button
+                    android:id="@+id/post_btn"
+                    android:layout_width="173dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="27dp"
+                    android:layout_marginBottom="40dp"
+                    android:backgroundTint="#3F51B5"
+                    android:text="Post it" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:backgroundTint="#00BCD4"-->
+<!--    tools:context=".activites.CreatePost">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/post_new_recipe"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="#000000"-->
+<!--            android:textSize="48sp" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etDishName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:ems="10"-->
+<!--            android:hint="Enter Dish Name here..."-->
+<!--            android:inputType="textPersonName" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etRecipe"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="205dp"-->
+<!--            android:ems="10"-->
+<!--            android:hint="Enter Recipe Here..."-->
+<!--            android:inputType="textPersonName" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etIngredients"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="137dp"-->
+<!--            android:ems="10"-->
+<!--            android:hint="Enter ingredients here..."-->
+<!--            android:inputType="textPersonName" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/ivUploadDishPhoto"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="208dp"-->
+<!--            android:clickable="true"-->
+<!--            app:srcCompat="@android:drawable/ic_menu_upload" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/post_btn"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="#3F51B5"-->
+<!--            android:text="Post it" />-->
+
+<!--    </LinearLayout>-->
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
