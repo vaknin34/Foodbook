@@ -41,7 +41,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:padding="14px"
                 android:text="@string/post_a_dish"
-                android:textColor="#050505"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
