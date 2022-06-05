@@ -55,8 +55,9 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
             holder.tvWriter.setText(current.getWriter());
             holder.tvDishName.setText(current.getDish_name());
             holder.tvDate.setText(current.getDate());
-            holder.tvLikes.setText(current.getLikes());
-            FirebaseStorageManager.downloadImage(current.getWriter(), current.getDish_name(), holder.ivImageFromFireBase);
+            holder.tvLikes.setText(String.valueOf(current.getLikes()));
+            //TODO: uncomment this
+            //FirebaseStorageManager.downloadImage(current.getWriter(), current.getDish_name(), holder.ivImageFromFireBase);
         }
     }
 

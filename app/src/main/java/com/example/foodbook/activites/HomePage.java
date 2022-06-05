@@ -10,9 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.foodbook.R;
 import com.example.foodbook.adapters.PostsListAdapter;
 import com.example.foodbook.databinding.ActivityHomePageBinding;
+import com.example.foodbook.models.Post;
 import com.example.foodbook.viewmodels.PostViewModel;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomePage extends AppCompatActivity {
@@ -38,6 +41,11 @@ public class HomePage extends AppCompatActivity {
             intent.putExtra(getString(R.string.user), current_user);
             startActivity(intent);
         });
+
+        List<Post> posts = new ArrayList<>();
+        posts.add(new Post("A","DADSA","ASSADSA","INSADAS","SADSADSA","SADSADSA",4));
+        adapter.setPosts(posts);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
