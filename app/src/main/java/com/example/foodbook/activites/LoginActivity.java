@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
             // Successfully signed in
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             Intent intent = new Intent(this, HomePage.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             intent.putExtra(getString(R.string.user), user);
             startActivity(intent);
         } else {
