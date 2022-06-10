@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodbook.R;
-import com.example.foodbook.activites.PostDetails;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.models.Post;
 
@@ -25,8 +24,6 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
         private final TextView tvWriter;
         private final TextView tvDishName;
         private final TextView tvDate;
-//        private final TextView tvIngredients;
-//        private final TextView tvRecipe;
         private final TextView tvLikes;
         private final ImageView ivImageFromFireBase;
 
@@ -74,8 +71,7 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
             holder.tvDishName.setText(current.getDish_name());
             holder.tvDate.setText(current.getDate());
             holder.tvLikes.setText(String.valueOf(current.getLikes()));
-            //TODO: uncomment this
-            //FirebaseStorageManager.downloadImage(current.getWriter(), current.getDish_name(), holder.ivImageFromFireBase);
+            FirebaseStorageManager.downloadImage(current.getWriter(), current.getDish_name(), holder.ivImageFromFireBase);
         }
     }
 

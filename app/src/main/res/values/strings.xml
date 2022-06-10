@@ -11,4 +11,5 @@
     <string name="recipe">Recipe</string>
     <string name="ingredients">Ingredients</string>
     <string name="dish_name">Dish Name</string>
+    <string name="postDetails">postDetails</string>
 </resources>

@@ -19,8 +19,8 @@ public class PostsRepository {
     public PostsRepository() {
         PostRoomDatabase db = PostRoomDatabase.getInstance();
         this.post_dao = db.postDao();
-        this.post_fire_db = new PostFirebaseDB(post_dao);
         this.postListData = new PostListData();
+        this.post_fire_db = new PostFirebaseDB(post_dao, postListData);
     }
 
     public LiveData<List<Post>> getAll() {
@@ -39,7 +39,7 @@ public class PostsRepository {
         postListData.setValue(post_dao.getAll());
     }
 
-    private class PostListData extends MutableLiveData<List<Post>> {
+    public class PostListData extends MutableLiveData<List<Post>> {
         public PostListData(){
             super();
             setValue(new ArrayList<>());

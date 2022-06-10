@@ -19,7 +19,7 @@ public interface PostDao {
     List<Post> findByName(String writer);
 
     @Insert
-    void insertAll(Post... posts);
+    void insertAll(List<Post> posts);
 
     @Delete
     void delete(Post post);
