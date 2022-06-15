@@ -17,14 +17,11 @@ public class FirebaseStorageManager {
         dishRef.putBytes(image);
     }
 
-    public static void downloadImage(String writer, String dish_name, ImageView imageView){
-        StorageReference dishRef = storageRef.child(writer + dish_name);
-        dishRef.getBytes(1000000000).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                imageView.setImageBitmap(bitmap);
-            }
+    public static void downloadImage(String path, ImageView imageView){
+        StorageReference dishRef = storageRef.child(path);
+        dishRef.getBytes(1000000000).addOnSuccessListener(bytes -> {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+            imageView.setImageBitmap(bitmap);
         });
     }
 

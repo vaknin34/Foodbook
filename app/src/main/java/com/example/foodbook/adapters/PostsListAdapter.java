@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.foodbook.R;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.models.Post;
+import com.example.foodbook.viewmodels.PostViewModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -26,14 +29,18 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
         private final TextView tvDate;
         private final TextView tvLikes;
         private final ImageView ivImageFromFireBase;
+        private final ImageView profilePhoto;
 
         private PostViewHolder(View itemView, ItemClickInterface itemClickInterface) {
             super(itemView);
+            firebaseAuth = FirebaseAuth.getInstance();
+            current_user = firebaseAuth.getCurrentUser();
             tvWriter = itemView.findViewById(R.id.tvWriterName);
             tvDishName = itemView.findViewById(R.id.tvDishName);
             tvDate = itemView.findViewById(R.id.tvDate);
             tvLikes = itemView.findViewById(R.id.tvLikes);
             ivImageFromFireBase = itemView.findViewById(R.id.ivDishImage);
+            profilePhoto = itemView.findViewById(R.id.profilePhoto);
 
             itemView.setOnClickListener(view -> {
                 if(itemClickInterface != null){
@@ -50,6 +57,8 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
     private final LayoutInflater mInflater;
     private List<Post> posts;
     private ItemClickInterface itemClickInterface;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser current_user;
 
 
     public PostsListAdapter(Context context) {
@@ -71,7 +80,8 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
             holder.tvDishName.setText(current.getDish_name());
             holder.tvDate.setText(current.getDate());
             holder.tvLikes.setText(String.valueOf(current.getLikes()));
-            FirebaseStorageManager.downloadImage(current.getWriter(), current.getDish_name(), holder.ivImageFromFireBase);
+            FirebaseStorageManager.downloadImage(current_user.getEmail() + "profile" , holder.profilePhoto);
+            FirebaseStorageManager.downloadImage(current.getWriter() + current.getDish_name(), holder.ivImageFromFireBase);
         }
     }
 
