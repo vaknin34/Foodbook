@@ -34,7 +34,7 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
         setContentView(binding.getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
-        current_user = firebaseAuth.getCurrentUser();
+        current_user =(FirebaseUser)getIntent().getExtras().get("user");
 
         viewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
@@ -44,6 +44,7 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
 
         binding.postDishBtn.setOnClickListener(view -> {
             Intent intent = new Intent(this, CreatePost.class);
+            intent.putExtra("user", firebaseAuth.getCurrentUser());
             startActivity(intent);
         });
 

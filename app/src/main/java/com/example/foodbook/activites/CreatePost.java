@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -29,7 +30,6 @@ public class CreatePost extends AppCompatActivity {
     FirebaseUser current_user;
     String dish_name, recipe, ingredients;
     Bitmap image;
-    FirebaseAuth firebaseAuth;
     private PostViewModel viewModel;
     byte[] image_bytes;
 
@@ -41,8 +41,7 @@ public class CreatePost extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        current_user = firebaseAuth.getCurrentUser();
+        current_user =(FirebaseUser)getIntent().getExtras().get("user");
 
         binding.ivUploadDishPhoto.setOnClickListener(view -> {
             Intent intent = new Intent();
@@ -70,6 +69,7 @@ public class CreatePost extends AppCompatActivity {
                 FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
                 viewModel.add(post);
                 Intent intent = new Intent(this, HomePage.class);
+                intent.putExtra("user", current_user);
                 startActivity(intent);
             }
         });

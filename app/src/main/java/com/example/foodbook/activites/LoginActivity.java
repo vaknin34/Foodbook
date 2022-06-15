@@ -60,8 +60,11 @@ public class LoginActivity extends AppCompatActivity {
             else {
                 firebaseAuth.signInWithEmailAndPassword(mail, password).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Intent intent = new Intent(this, HomePage.class);
-                        startActivity(intent);
+                        firebaseAuth.addAuthStateListener(firebaseAuth -> {
+                            Intent intent = new Intent(this, HomePage.class);
+                            intent.putExtra("user", firebaseAuth.getCurrentUser());
+                            startActivity(intent);
+                        });
                     }
                     else {
                         Toast.makeText(this, "email or password are incorrect", Toast.LENGTH_SHORT).show();

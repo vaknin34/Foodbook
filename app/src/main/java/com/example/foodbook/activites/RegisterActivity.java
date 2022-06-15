@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import java.io.ByteArrayOutputStream;
 
@@ -72,6 +73,9 @@ public class RegisterActivity extends AppCompatActivity {
             else {
                 firebaseAuth.createUserWithEmailAndPassword(mail, password).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName("niv").build();
+                        currentUser.updateProfile(profileUpdates);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         String firebase_image_path = mail + "profile";
                         image.compress(Bitmap.CompressFormat.PNG, 100, stream);
