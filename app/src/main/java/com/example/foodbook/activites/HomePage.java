@@ -12,6 +12,7 @@ import com.example.foodbook.R;
 import com.example.foodbook.adapters.PostsListAdapter;
 import com.example.foodbook.databinding.ActivityHomePageBinding;
 import com.example.foodbook.viewmodels.PostViewModel;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import interfaces.ItemClickInterface;
@@ -23,12 +24,17 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
     private PostViewModel viewModel;
     private FirebaseUser current_user;
     private PostsListAdapter adapter;
+    private FirebaseAuth firebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityHomePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        current_user = firebaseAuth.getCurrentUser();
 
         viewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
@@ -43,13 +49,6 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
         });
 
         viewModel.get().observe(this, adapter::setPosts);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        current_user = (FirebaseUser) getIntent().getExtras().get(getString(R.string.user));
-        Log.d("Niv", current_user.getEmail());
     }
 
     @Override
