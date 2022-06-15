@@ -35,7 +35,9 @@ public class PostsRepository {
         post_fire_db.delete(post);
     }
 
-    public void reload() { post_fire_db.reload(); }
+    public void reload() {
+        postListData.setValue(post_dao.getAll());
+    }
 
     public class PostListData extends MutableLiveData<List<Post>> {
         public PostListData(){

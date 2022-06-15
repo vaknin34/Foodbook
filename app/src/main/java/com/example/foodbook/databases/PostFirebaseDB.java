@@ -18,13 +18,8 @@ import java.util.List;
 public class PostFirebaseDB {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = database.getReference("Posts");
-    private PostDao post_dao;
-    private PostsRepository.PostListData postListData;
 
     public PostFirebaseDB(PostDao post_dao, PostsRepository.PostListData postListData) {
-        this.postListData = postListData;
-        this.post_dao = post_dao;
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -54,25 +49,4 @@ public class PostFirebaseDB {
     public void delete(Post post) {
         myRef.child(String.valueOf(post.getId())).removeValue();
     }
-
-    public void  reload(){myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot snapshot) {
-            List<Post> posts = new ArrayList<>();
-            for (DataSnapshot postsnap: snapshot.getChildren()) {
-                Post post = postsnap.getValue(Post.class);
-                posts.add(post);
-                Log.d("Data", "Value is: " + post.getWriter() + post.getId());
-            }
-            postListData.setValue(posts);
-            new Thread(()->{
-                post_dao.clear();
-                post_dao.insertAll(posts);
-            }).start();
-        }
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
-            Log.d("Data", "Failed to read value.", error.toException());
-        }
-    });}
 }
