@@ -92,6 +92,7 @@
                 android:layout_marginLeft="56dp"
                 android:layout_marginTop="-2dp"
                 android:layout_marginEnd="54dp"
+                android:fontFamily="sans-serif-medium"
                 android:background="@drawable/empty_rectangle"
                 android:paddingStart="20dp"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -128,6 +129,7 @@
                 android:layout_marginEnd="54dp"
                 android:background="@drawable/empty_rectangle"
                 android:gravity="start|top"
+                android:fontFamily="sans-serif-medium"
                 android:inputType="textMultiLine"
                 android:paddingStart="20dp"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -165,7 +167,9 @@
                 android:layout_marginTop="33dp"
                 android:layout_marginEnd="54dp"
                 android:background="@drawable/empty_rectangle"
-                android:inputType="phone"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
                 android:paddingStart="20dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -210,6 +214,7 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginBottom="8dp"
                 android:backgroundTint="#3F51B5"
+                android:fontFamily="sans-serif-medium"
                 android:text="@string/post_it" />
 
         </RelativeLayout>

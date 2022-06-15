@@ -8,16 +8,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.foodbook.R;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.databinding.ActivityCreatePostBinding;
 import com.example.foodbook.models.Post;
 import com.example.foodbook.viewmodels.PostViewModel;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.ByteArrayOutputStream;
@@ -68,7 +65,7 @@ public class CreatePost extends AppCompatActivity {
             format = new SimpleDateFormat("MM-dd HH:mm");
 
             if(!dish_name.isEmpty() && !recipe.isEmpty() && !ingredients.isEmpty() && image_bytes.length > 0){
-                String firebase_image_path = current_user.getEmail() + dish_name;
+                String firebase_image_path = current_user.getDisplayName() + dish_name;
                 Post post = new Post(dish_name, current_user.getDisplayName(), format.format(new Date()), ingredients, recipe, firebase_image_path, 0);
                 FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
                 viewModel.add(post);
