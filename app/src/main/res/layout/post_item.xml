@@ -18,19 +18,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="72dp"
+            android:layout_marginStart="20dp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/profilePhotoCV"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
                 app:cardCornerRadius="250dp">
 
                 <ImageView
                     android:id="@+id/profilePhoto"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher_foreground" />
 
@@ -63,17 +65,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="82dp">
-
-            <View
-                android:id="@+id/search_bar"
-                android:layout_width="168dp"
-                android:layout_height="36dp"
-                android:background="@drawable/empty_rectangle"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.144"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvDishName"
