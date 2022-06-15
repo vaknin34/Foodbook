@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CreatePost extends AppCompatActivity {
@@ -32,6 +33,7 @@ public class CreatePost extends AppCompatActivity {
     Bitmap image;
     private PostViewModel viewModel;
     byte[] image_bytes;
+    SimpleDateFormat format;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +65,11 @@ public class CreatePost extends AppCompatActivity {
                 image_bytes = stream.toByteArray();
             }
 
+            format = new SimpleDateFormat("MM-dd HH:mm");
+
             if(!dish_name.isEmpty() && !recipe.isEmpty() && !ingredients.isEmpty() && image_bytes.length > 0){
-                String firebase_image_path = current_user.getDisplayName() + dish_name;
-                Post post = new Post(dish_name, current_user.getDisplayName(), String.valueOf(new Date()), ingredients, recipe, firebase_image_path, 0);
+                String firebase_image_path = current_user.getEmail() + dish_name;
+                Post post = new Post(dish_name, current_user.getDisplayName(), format.format(new Date()), ingredients, recipe, firebase_image_path, 0);
                 FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
                 viewModel.add(post);
                 Intent intent = new Intent(this, HomePage.class);

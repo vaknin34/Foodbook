@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="408dp"
-    android:layout_height="462dp"
+    android:layout_height="427dp"
     android:layout_marginBottom="6dp"
     android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="408dp"
-        android:layout_height="462dp"
+        android:layout_height="427dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,9 +62,15 @@
             </LinearLayout>
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/ivDishImage"
+            android:layout_width="match_parent"
+            android:layout_height="235dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="82dp">
+            android:layout_height="52dp">
 
             <TextView
                 android:id="@+id/tvDishName"
@@ -84,36 +90,39 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/ivDishImage"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="235dp"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_height="64dp">
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="3dp"
-                android:layout_height="23dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
+                android:layout_width="22dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="38dp"
+                android:layout_weight="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/heart" />
 
             <TextView
                 android:id="@+id/tvLikes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="133dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="37dp"
                 android:layout_weight="10"
                 android:fontFamily="sans-serif-medium"
                 android:text="TextView"
-                android:textSize="20sp" />
-        </LinearLayout>
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.555" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>

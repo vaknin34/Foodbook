@@ -32,7 +32,6 @@ public class PostFirebaseDB {
                 }
                 postListData.setValue(posts);
                 new Thread(()->{
-                    post_dao.clear();
                     post_dao.insertAll(posts);
                 }).start();
             }

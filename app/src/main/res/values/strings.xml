@@ -18,11 +18,11 @@
     <string name="don_t_have_account_yet">Don\'t have account yet?</string>
     <string name="click_here">click here</string>
     <string name="mail">Mail</string>
-    <string name="sign_in1">Sign In</string>
+    <string name="sign_in1">Sign in</string>
     <string name="register">Register</string>
     <string name="email">Email</string>
     <string name="already_have_account">Already have account?</string>
     <string name="profile_image">Profile Image</string>
-    <string name="register1">register</string>
+    <string name="register1">Register</string>
     <string name="name">name</string>
 </resources>
