@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
     ActivityRegisterBinding binding;
     Bitmap image;
     byte[] image_bytes;
-    String mail, password;
+    String mail, password, name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         binding.registerBtn.setOnClickListener(view -> {
+            name = binding.etName.getText().toString();
             mail = binding.etEmail.getText().toString();
             password = binding.etPassword.getText().toString();
 
@@ -67,6 +68,9 @@ public class RegisterActivity extends AppCompatActivity {
             else if (password.isEmpty()){
                 Toast.makeText(this, "Password not valid", Toast.LENGTH_SHORT).show();
             }
+            else if (name.isEmpty()){
+                Toast.makeText(this, "Name not valid", Toast.LENGTH_SHORT).show();
+            }
             else if (image == null){
                 Toast.makeText(this, "Picture not valid", Toast.LENGTH_SHORT).show();
             }
@@ -74,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
                 firebaseAuth.createUserWithEmailAndPassword(mail, password).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName("niv").build();
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
                         currentUser.updateProfile(profileUpdates);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         String firebase_image_path = mail + "profile";
