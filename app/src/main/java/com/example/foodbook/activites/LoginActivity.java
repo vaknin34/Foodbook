@@ -30,7 +30,7 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ActivityMainBinding binding;
-    private String user_name, password;
+    private String mail, password;
     private Button signin_btn;
 
 
@@ -44,23 +44,23 @@ public class LoginActivity extends AppCompatActivity {
 
         signin_btn = binding.signinBtn;
         signin_btn.setOnClickListener(view -> {
-            user_name = binding.etUserName.getText().toString();
+            mail = binding.etMail.getText().toString();
             password = binding.etPassword.getText().toString();
 
-            if (user_name.isEmpty()) {
-                Toast.makeText(this, "Please enter username", Toast.LENGTH_SHORT).show();
+            if (mail.isEmpty()) {
+                Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
             }
             else if (password.isEmpty()){
                 Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
             }
             else {
-                firebaseAuth.signInWithEmailAndPassword(user_name, password).addOnCompleteListener(task -> {
+                firebaseAuth.signInWithEmailAndPassword(mail, password).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Intent intent = new Intent(this, HomePage.class);
                         startActivity(intent);
                     }
                     else {
-                        Toast.makeText(this, "username or password are incorrect", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "email or password are incorrect", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
