@@ -44,7 +44,6 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
 
         binding.postDishBtn.setOnClickListener(view -> {
             Intent intent = new Intent(this, CreatePost.class);
-            intent.putExtra(getString(R.string.user), current_user);
             startActivity(intent);
         });
 

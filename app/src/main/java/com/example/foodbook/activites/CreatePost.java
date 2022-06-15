@@ -16,6 +16,7 @@ import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.databinding.ActivityCreatePostBinding;
 import com.example.foodbook.models.Post;
 import com.example.foodbook.viewmodels.PostViewModel;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.ByteArrayOutputStream;
@@ -28,6 +29,7 @@ public class CreatePost extends AppCompatActivity {
     FirebaseUser current_user;
     String dish_name, recipe, ingredients;
     Bitmap image;
+    FirebaseAuth firebaseAuth;
     private PostViewModel viewModel;
     byte[] image_bytes;
 
@@ -39,7 +41,8 @@ public class CreatePost extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
 
-        current_user = (FirebaseUser) getIntent().getExtras().get(getString(R.string.user));
+        firebaseAuth = FirebaseAuth.getInstance();
+        current_user = firebaseAuth.getCurrentUser();
 
         binding.ivUploadDishPhoto.setOnClickListener(view -> {
             Intent intent = new Intent();
@@ -67,7 +70,6 @@ public class CreatePost extends AppCompatActivity {
                 FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
                 viewModel.add(post);
                 Intent intent = new Intent(this, HomePage.class);
-                intent.putExtra(getString(R.string.user), current_user);
                 startActivity(intent);
             }
         });

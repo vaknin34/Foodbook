@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -31,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ActivityMainBinding binding;
     private String mail, password;
-    private Button signin_btn;
 
 
     @Override
@@ -42,8 +42,12 @@ public class LoginActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        signin_btn = binding.signinBtn;
-        signin_btn.setOnClickListener(view -> {
+        binding.gotoRegister.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+        });
+
+        binding.signinBtn.setOnClickListener(view -> {
             mail = binding.etMail.getText().toString();
             password = binding.etPassword.getText().toString();
 
