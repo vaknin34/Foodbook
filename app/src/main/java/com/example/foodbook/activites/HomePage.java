@@ -2,6 +2,7 @@ package com.example.foodbook.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -47,11 +48,7 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
             startActivity(intent);
         });
 
-        viewModel.get().observe(this, p->{
-            adapter.setPosts(p);
-            binding.scrollRefresh.setRefreshing(false);
-        });
-        binding.scrollRefresh.setOnRefreshListener(() -> viewModel.reload());
+        viewModel.get().observe(this, adapter::setPosts);
     }
 
     @Override
