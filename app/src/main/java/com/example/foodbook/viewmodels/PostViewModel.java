@@ -13,7 +13,7 @@ public class PostViewModel extends ViewModel {
     private PostsRepository repository;
 
     public PostViewModel() {
-        repository = new PostsRepository();
+        repository = PostsRepository.getInstance();
         posts = repository.getAll();
     }
 

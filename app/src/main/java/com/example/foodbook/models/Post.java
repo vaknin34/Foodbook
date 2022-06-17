@@ -1,5 +1,6 @@
 package com.example.foodbook.models;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -9,8 +10,9 @@ import java.io.Serializable;
 @Entity
 public class Post implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @PrimaryKey
+    @NonNull
+    private String id;
     @ColumnInfo(name = "dish name")
     private String dish_name;
     @ColumnInfo(name = "Writer name")
@@ -30,6 +32,7 @@ public class Post implements Serializable {
     public Post() { }
 
     public Post(String dish_name, String writer, String date, String ingredients, String recipe, String image_firebase_path, int likes) {
+        this.id = java.util.UUID.randomUUID().toString().replace("-","");
         this.dish_name = dish_name;
         this.writer = writer;
         this.date = date;
@@ -47,11 +50,11 @@ public class Post implements Serializable {
         this.dish_name = dish_name;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
