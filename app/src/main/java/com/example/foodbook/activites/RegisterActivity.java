@@ -58,9 +58,9 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         binding.registerBtn.setOnClickListener(view -> {
-            name = binding.etName.getText().toString();
-            mail = binding.etEmail.getText().toString();
-            password = binding.etPassword.getText().toString();
+            name = binding.etName.getEditText().getText().toString();
+            mail = binding.etEmail.getEditText().getText().toString();
+            password = binding.etPassword.getEditText().getText().toString();
 
             if (mail.isEmpty() || !mail.matches("^(.+)@(\\S+)$")) {
                 Toast.makeText(this, "Email not valid", Toast.LENGTH_SHORT).show();

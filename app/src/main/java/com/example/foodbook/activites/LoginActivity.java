@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.signinBtn.setOnClickListener(view -> {
-            mail = binding.etMail.getText().toString();
-            password = binding.etPassword.getText().toString();
+            mail = binding.etMail.getEditText().getText().toString();
+            password = binding.etPassword.getEditText().getText().toString();
 
             if (mail.isEmpty()) {
                 Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();

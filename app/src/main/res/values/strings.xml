@@ -24,6 +24,6 @@
     <string name="already_have_account">Already have account?</string>
     <string name="profile_image">Profile Image</string>
     <string name="register1">Register</string>
-    <string name="name">name</string>
+    <string name="name">Name</string>
     <string name="like">like</string>
 </resources>

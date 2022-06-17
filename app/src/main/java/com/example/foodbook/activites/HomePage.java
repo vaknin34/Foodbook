@@ -69,6 +69,10 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
                     intent3.putExtra("user", firebaseAuth.getCurrentUser());
                     startActivity(intent3);
                     break;
+                case  R.id.log_out:
+                    Intent intent4 = new Intent(this, LoginActivity.class);
+                    intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent4);
             }
             return true;
         });

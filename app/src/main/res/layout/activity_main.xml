@@ -18,7 +18,7 @@
             android:layout_height="224dp">
 
             <TextView
-                android:id="@+id/new_post_title"
+                android:id="@+id/sign_in_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -29,7 +29,7 @@
                 android:layout_marginLeft="110dp"
                 android:layout_marginTop="138dp"
                 android:layout_marginEnd="110dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/abeezee"
                 android:text="@string/sign_in1"
                 android:textAlignment="center"
                 android:textSize="48sp"
@@ -62,9 +62,10 @@
             android:layout_marginTop="1dp"
             android:layout_marginEnd="1dp">
 
-            <TextView
-                android:id="@+id/mail"
-                android:layout_width="101dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etMail"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="295dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
@@ -73,33 +74,23 @@
                 android:layout_marginStart="57dp"
                 android:layout_marginLeft="57dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="252dp"
-                android:fontFamily="sans-serif-medium"
+                android:layout_marginEnd="58dp"
+                android:fontFamily="@font/abeezee"
                 android:gravity="top"
-                android:text="@string/email"
-                android:textColor="#000000"
-                android:textSize="15sp" />
+                android:hint="@string/email"
+                android:textSize="15sp">
 
-            <EditText
-                android:id="@+id/etMail"
-                android:layout_width="300dp"
-                android:layout_height="55dp"
-                android:layout_below="@+id/mail"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="53dp"
-                android:layout_marginLeft="53dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="53dp"
-                android:background="@drawable/empty_rectangle"
-                android:fontFamily="sans-serif-medium"
-                android:inputType="text"
-                android:paddingStart="20dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/abeezee" />
 
-            <TextView
-                android:id="@+id/password"
-                android:layout_width="100dp"
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="295dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/etMail"
                 android:layout_alignParentStart="true"
@@ -108,29 +99,18 @@
                 android:layout_marginStart="56dp"
                 android:layout_marginLeft="56dp"
                 android:layout_marginTop="27dp"
-                android:layout_marginEnd="254dp"
-                android:fontFamily="sans-serif-medium"
+                android:layout_marginEnd="58dp"
+                android:fontFamily="@font/abeezee"
                 android:gravity="top"
-                android:text="@string/password"
-                android:textColor="#000000"
-                android:textSize="15sp" />
+                android:hint="@string/password"
+                android:textSize="15sp">
 
-            <EditText
-                android:id="@+id/etPassword"
-                android:layout_width="300dp"
-                android:layout_height="55dp"
-                android:layout_below="@+id/password"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="53dp"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="53dp"
-                android:background="@drawable/empty_rectangle"
-                android:fontFamily="sans-serif-medium"
-                android:inputType="textPassword"
-                android:paddingStart="20dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/abeezee" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
         </RelativeLayout>
@@ -138,9 +118,9 @@
         <RelativeLayout
             android:id="@+id/endPage"
             android:layout_width="match_parent"
-            android:layout_height="206dp"
+            android:layout_height="237dp"
             android:layout_below="@id/middlePage"
-            android:layout_marginTop="0dp">
+            android:layout_marginTop="-31dp">
 
             <Button
                 android:id="@+id/signin_btn"
@@ -153,8 +133,9 @@
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="46dp"
                 android:backgroundTint="#3F51B5"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/sign_in" />
+                android:fontFamily="@font/abeezee"
+                android:text="@string/sign_in"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/don_t_have_"
@@ -164,7 +145,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="53dp"
                 android:layout_marginTop="120dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/abeezee"
                 android:text="@string/don_t_have_account_yet"
                 android:textSize="20sp" />
 
@@ -174,10 +155,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="47dp"
-                android:layout_marginBottom="59dp"
+                android:layout_marginEnd="26dp"
+                android:layout_marginBottom="93dp"
                 android:clickable="true"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/abeezee"
                 android:text="@string/register1"
                 android:textColor="#3F51B5"
                 android:textSize="20sp" />
