@@ -3,10 +3,7 @@ package com.example.foodbook.activites;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +12,6 @@ import com.example.foodbook.R;
 import com.example.foodbook.adapters.PostsListAdapter;
 import com.example.foodbook.databinding.ActivityHomePageBinding;
 import com.example.foodbook.viewmodels.PostViewModel;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -48,7 +44,13 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
         binding.lstPosts.setAdapter(adapter);
         binding.lstPosts.setLayoutManager(new LinearLayoutManager(this));
 
-        viewModel.get().observe(this, adapter::setPosts);
+        viewModel.get().observe(this, posts -> {
+            adapter.setPosts(posts);
+            binding.swipeRefresh.setRefreshing(false);
+        });
+        binding.swipeRefresh.setOnRefreshListener(() -> {
+            viewModel.reload();
+        });
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {

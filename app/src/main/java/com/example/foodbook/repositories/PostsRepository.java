@@ -40,7 +40,7 @@ public class PostsRepository {
     }
 
     public void reload() {
-        postListData.setValue(post_dao.getAll());
+        post_fire_db.reload();
     }
 
     public class PostListData extends MutableLiveData<List<Post>> {
