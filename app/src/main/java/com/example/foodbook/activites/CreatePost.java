@@ -1,6 +1,7 @@
 package com.example.foodbook.activites;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.foodbook.R;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.databinding.ActivityCreatePostBinding;
 import com.example.foodbook.models.Post;
@@ -31,6 +33,8 @@ public class CreatePost extends AppCompatActivity {
     private PostViewModel viewModel;
     byte[] image_bytes;
     SimpleDateFormat format;
+    Context context;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,9 @@ public class CreatePost extends AppCompatActivity {
         setContentView(binding.getRoot());
         viewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
+        current_user =(FirebaseUser)getIntent().getExtras().get("user");
+
+        context = this;
 
         current_user =(FirebaseUser)getIntent().getExtras().get("user");
 
@@ -52,9 +59,9 @@ public class CreatePost extends AppCompatActivity {
 
 
         binding.postBtn.setOnClickListener(view -> {
-            dish_name = binding.etDishName.getText().toString();
-            recipe = binding.etRecipe.getText().toString();
-            ingredients = binding.etIngredients.getText().toString();
+            dish_name = binding.etDishName.getEditText().getText().toString();
+            recipe = binding.etRecipe.getEditText().getText().toString();
+            ingredients = binding.etIngredients.getEditText().getText().toString();
 
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             if(image != null){
@@ -73,6 +80,31 @@ public class CreatePost extends AppCompatActivity {
                 intent.putExtra("user", current_user);
                 startActivity(intent);
             }
+        });
+
+        binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home:
+                    Intent intent1 = new Intent(context, HomePage.class);
+                    intent1.putExtra("user", current_user);
+                    startActivity(intent1);
+                    break;
+                case R.id.profile:
+                    Intent intent2 = new Intent(context, Profile.class);
+                    intent2.putExtra("user", current_user);
+                    startActivity(intent2);
+                    break;
+                case R.id.new_post:
+                    Intent intent3 = new Intent(context, CreatePost.class);
+                    intent3.putExtra("user", current_user);
+                    startActivity(intent3);
+                    break;
+                case  R.id.log_out:
+                    Intent intent4 = new Intent(this, LoginActivity.class);
+                    intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent4);
+            }
+            return true;
         });
     }
 

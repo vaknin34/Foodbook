@@ -24,7 +24,6 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
     private PostViewModel viewModel;
     private FirebaseUser current_user;
     private PostsListAdapter adapter;
-    private FirebaseAuth firebaseAuth;
     Context context;
 
 
@@ -35,7 +34,6 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
         setContentView(binding.getRoot());
         context = this;
 
-        firebaseAuth = FirebaseAuth.getInstance();
         current_user =(FirebaseUser)getIntent().getExtras().get("user");
 
         viewModel = new ViewModelProvider(this).get(PostViewModel.class);
@@ -61,12 +59,12 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
                     break;
                 case R.id.profile:
                     Intent intent2 = new Intent(context, Profile.class);
-                    intent2.putExtra("user", firebaseAuth.getCurrentUser());
+                    intent2.putExtra("user", current_user);
                     startActivity(intent2);
                     break;
                 case R.id.new_post:
                     Intent intent3 = new Intent(context, CreatePost.class);
-                    intent3.putExtra("user", firebaseAuth.getCurrentUser());
+                    intent3.putExtra("user", current_user);
                     startActivity(intent3);
                     break;
                 case  R.id.log_out:
