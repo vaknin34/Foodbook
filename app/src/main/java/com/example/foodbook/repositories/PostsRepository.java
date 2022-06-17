@@ -15,12 +15,16 @@ public class PostsRepository {
     private PostDao post_dao;
     private PostFirebaseDB post_fire_db;
     private PostListData postListData;
+    private static PostsRepository instance = new PostsRepository();
 
-    public PostsRepository() {
+    private PostsRepository() {
         PostRoomDatabase db = PostRoomDatabase.getInstance();
         this.post_dao = db.postDao();
         this.postListData = new PostListData();
         this.post_fire_db = new PostFirebaseDB(post_dao, postListData);
+    }
+    public static PostsRepository getInstance(){
+        return instance;
     }
 
     public LiveData<List<Post>> getAll() {

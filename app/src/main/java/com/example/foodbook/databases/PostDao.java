@@ -27,6 +27,6 @@ public interface PostDao {
     @Update
     void update(Post post);
 
-    @Query("DELETE FROM Post")
+    @Query("DELETE FROM post")
     void clear();
 }

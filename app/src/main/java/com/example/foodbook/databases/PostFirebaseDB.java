@@ -32,6 +32,7 @@ public class PostFirebaseDB {
                 }
                 postListData.setValue(posts);
                 new Thread(()->{
+                    post_dao.clear();
                     post_dao.insertAll(posts);
                 }).start();
             }
@@ -42,7 +43,9 @@ public class PostFirebaseDB {
         });
     }
     public void AddPost(Post post){
+
         myRef.child(String.valueOf(post.getId())).setValue(post);
+
     }
 
     public void delete(Post post) {
