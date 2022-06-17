@@ -25,15 +25,11 @@ public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.Po
     class PostViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvDish;
         private final TextView tvLikesNum;
-        private final ImageView profilePhoto;
 
         private PostViewHolder(View itemView, ItemClickInterface itemClickInterface) {
             super(itemView);
-            firebaseAuth = FirebaseAuth.getInstance();
-            current_user = firebaseAuth.getCurrentUser();
             tvDish = itemView.findViewById(R.id.tvDish);
             tvLikesNum = itemView.findViewById(R.id.tvLikesNum);
-            profilePhoto = itemView.findViewById(R.id.profilePhoto);
 
             itemView.setOnClickListener(view -> {
                 if(itemClickInterface != null){
@@ -50,8 +46,6 @@ public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.Po
     private final LayoutInflater mInflater;
     private List<Post> posts;
     private ItemClickInterface itemClickInterface;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseUser current_user;
 
 
     public SmallPostsAdapter(Context context) {
@@ -71,7 +65,6 @@ public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.Po
             final Post current = posts.get(position);
             holder.tvDish.setText(current.getDish_name());
             holder.tvLikesNum.setText(String.valueOf(current.getLikes()));
-            FirebaseStorageManager.downloadImage(current.getWriter() + current.getDish_name(), holder.profilePhoto);
         }
     }
 

@@ -59,6 +59,7 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
                     break;
                 case R.id.profile:
                     Intent intent2 = new Intent(context, Profile.class);
+                    intent2.putExtra("user", firebaseAuth.getCurrentUser());
                     startActivity(intent2);
                     break;
                 case R.id.new_post:
