@@ -43,10 +43,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lstPosts"
-        android:layout_width="409dp"
-        android:layout_height="443dp"
+        android:layout_width="413dp"
+        android:layout_height="485dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,21 +67,6 @@
         app:menu="@menu/bottom_navigation_menu" >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/post_dish_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="339dp"
-        android:layout_marginBottom="20dp"
-        android:clickable="true"
-        app:backgroundTint="#3F51B5"
-        app:layout_constraintBottom_toTopOf="@+id/lstPosts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:srcCompat="@android:drawable/ic_input_add" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

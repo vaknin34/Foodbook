@@ -23,17 +23,17 @@ import interfaces.ItemClickInterface;
 public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.PostViewHolder> {
 
     class PostViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvDishName;
-        private final TextView tvLikes;
-        private final ImageView ivImageFromFireBase;
+        private final TextView tvDish;
+        private final TextView tvLikesNum;
+        private final ImageView profilePhoto;
 
         private PostViewHolder(View itemView, ItemClickInterface itemClickInterface) {
             super(itemView);
             firebaseAuth = FirebaseAuth.getInstance();
             current_user = firebaseAuth.getCurrentUser();
-            tvDishName = itemView.findViewById(R.id.tvDishName);
-            tvLikes = itemView.findViewById(R.id.tvLikes);
-            ivImageFromFireBase = itemView.findViewById(R.id.ivDishImage);
+            tvDish = itemView.findViewById(R.id.tvDish);
+            tvLikesNum = itemView.findViewById(R.id.tvLikesNum);
+            profilePhoto = itemView.findViewById(R.id.profilePhoto);
 
             itemView.setOnClickListener(view -> {
                 if(itemClickInterface != null){
@@ -61,7 +61,7 @@ public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.Po
 
     @Override
     public PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.post_item, parent, false);
+        View itemView = mInflater.inflate(R.layout.small_post_for_profile, parent, false);
         return new PostViewHolder(itemView, itemClickInterface);
     }
 
@@ -69,9 +69,9 @@ public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.Po
     public void onBindViewHolder(PostViewHolder holder, int position) {
         if (posts != null) {
             final Post current = posts.get(position);
-            holder.tvDishName.setText(current.getDish_name());
-            holder.tvLikes.setText(String.valueOf(current.getLikes()));
-            FirebaseStorageManager.downloadImage(current.getWriter() + current.getDish_name(), holder.ivImageFromFireBase);
+            holder.tvDish.setText(current.getDish_name());
+            holder.tvLikesNum.setText(String.valueOf(current.getLikes()));
+            FirebaseStorageManager.downloadImage(current.getWriter() + current.getDish_name(), holder.profilePhoto);
         }
     }
 
