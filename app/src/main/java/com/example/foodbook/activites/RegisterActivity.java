@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.foodbook.R;
 import com.example.foodbook.databases.FirebaseStorageManager;
-import com.example.foodbook.databinding.ActivityCreatePostBinding;
 import com.example.foodbook.databinding.ActivityMainBinding;
 import com.example.foodbook.databinding.ActivityRegisterBinding;
 import com.example.foodbook.viewmodels.PostViewModel;

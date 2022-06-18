@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.foodbook.R;
-import com.example.foodbook.databinding.ActivityHomePageBinding;
 import com.example.foodbook.databinding.ActivityNavBinding;
 import com.example.foodbook.fragments.HomeFragment;
 import com.example.foodbook.fragments.NewPostFragment;

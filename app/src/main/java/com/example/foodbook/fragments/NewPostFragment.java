@@ -1,7 +1,6 @@
 package com.example.foodbook.fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -9,32 +8,23 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.foodbook.R;
-import com.example.foodbook.activites.HomePage;
-import com.example.foodbook.adapters.PostsListAdapter;
-import com.example.foodbook.databinding.ActivityCreatePostBinding;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.foodbook.viewmodels.PostViewModel;
 import com.example.foodbook.databases.FirebaseStorageManager;
-import com.example.foodbook.databinding.ActivityCreatePostBinding;
 import com.example.foodbook.models.Post;
 
 import java.io.ByteArrayOutputStream;
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

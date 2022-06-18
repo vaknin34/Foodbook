@@ -14,19 +14,10 @@
             android:name=".activites.NavActivity"
             android:exported="false" />
         <activity
-            android:name=".activites.Profile"
-            android:exported="false" />
-        <activity
             android:name=".activites.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".activites.PostDetails"
-            android:exported="false" />
-        <activity
-            android:name=".activites.CreatePost"
-            android:exported="false" />
-        <activity
-            android:name=".activites.HomePage"
             android:exported="false" />
         <activity
             android:name=".activites.LoginActivity"
