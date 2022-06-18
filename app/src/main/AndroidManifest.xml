@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodbook">
         <activity
+            android:name=".activites.NavActivity"
+            android:exported="false" />
+        <activity
             android:name=".activites.Profile"
             android:exported="false" />
         <activity

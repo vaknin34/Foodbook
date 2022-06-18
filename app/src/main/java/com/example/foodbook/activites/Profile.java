@@ -12,7 +12,7 @@ import com.example.foodbook.databinding.ActivityProfileBinding;
 import com.example.foodbook.viewmodels.PostViewModel;
 import com.google.firebase.auth.FirebaseUser;
 
-import interfaces.ItemClickInterface;
+import com.example.foodbook.interfaces.ItemClickInterface;
 
 public class Profile extends AppCompatActivity implements ItemClickInterface {
     ActivityProfileBinding binding;

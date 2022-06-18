@@ -12,10 +12,9 @@ import com.example.foodbook.R;
 import com.example.foodbook.adapters.PostsListAdapter;
 import com.example.foodbook.databinding.ActivityHomePageBinding;
 import com.example.foodbook.viewmodels.PostViewModel;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import interfaces.ItemClickInterface;
+import com.example.foodbook.interfaces.ItemClickInterface;
 
 
 public class HomePage extends AppCompatActivity implements ItemClickInterface {
@@ -33,22 +32,22 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
         binding = ActivityHomePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         context = this;
-
-        current_user =(FirebaseUser)getIntent().getExtras().get("user");
-
-        viewModel = new ViewModelProvider(this).get(PostViewModel.class);
-
-        adapter = new PostsListAdapter(this);
-        binding.lstPosts.setAdapter(adapter);
-        binding.lstPosts.setLayoutManager(new LinearLayoutManager(this));
-
-        viewModel.get().observe(this, posts -> {
-            adapter.setPosts(posts);
-            binding.swipeRefresh.setRefreshing(false);
-        });
-        binding.swipeRefresh.setOnRefreshListener(() -> {
-            viewModel.reload();
-        });
+//
+//        current_user =(FirebaseUser)getIntent().getExtras().get("user");
+//
+//        viewModel = new ViewModelProvider(this).get(PostViewModel.class);
+//
+//        adapter = new PostsListAdapter(this);
+//        binding.lstPosts.setAdapter(adapter);
+//        binding.lstPosts.setLayoutManager(new LinearLayoutManager(this));
+//
+//        viewModel.get().observe(this, posts -> {
+//            adapter.setPosts(posts);
+//            binding.swipeRefresh.setRefreshing(false);
+//        });
+//        binding.swipeRefresh.setOnRefreshListener(() -> {
+//            viewModel.reload();
+//        });
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -65,6 +64,7 @@ public class HomePage extends AppCompatActivity implements ItemClickInterface {
                 case R.id.new_post:
                     Intent intent3 = new Intent(context, CreatePost.class);
                     intent3.putExtra("user", current_user);
+                    finish();
                     startActivity(intent3);
                     break;
                 case  R.id.log_out:

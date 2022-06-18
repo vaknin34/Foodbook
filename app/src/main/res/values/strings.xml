@@ -5,7 +5,7 @@
     <string name="foodbook">foodbook</string>
     <string name="todo">TODO</string>
     <string name="post_a_dish">Post a dish</string>
-    <string name="post_new_recipe">Post New Recipe</string>
+    <string name="post_new_recipe">New Recipe</string>
     <string name="post_it">Post it</string>
     <string name="upload_dish_photo">Upload Dish Photo</string>
     <string name="recipe">Recipe</string>
@@ -26,4 +26,6 @@
     <string name="register1">Register</string>
     <string name="name">Name</string>
     <string name="like">like</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -54,7 +54,6 @@ public class RegisterActivity extends AppCompatActivity {
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(Intent.createChooser(intent, "Select Picture"),REQUEST_CODE);
-            binding.ivUploadProfilePhoto.setImageBitmap(image);
         });
 
         binding.registerBtn.setOnClickListener(view -> {

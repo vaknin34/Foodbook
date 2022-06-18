@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,12 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.foodbook.R;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.models.Post;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-import interfaces.ItemClickInterface;
+import com.example.foodbook.interfaces.ItemClickInterface;
 
 
 public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.PostViewHolder> {

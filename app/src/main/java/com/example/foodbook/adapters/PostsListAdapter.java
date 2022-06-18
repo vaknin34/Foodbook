@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodbook.R;
@@ -17,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-import interfaces.ItemClickInterface;
+import com.example.foodbook.interfaces.ItemClickInterface;
 
 
 public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.PostViewHolder> {
@@ -60,9 +61,9 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
     private FirebaseUser current_user;
 
 
-    public PostsListAdapter(Context context) {
-        mInflater = LayoutInflater.from(context);
-        itemClickInterface = (ItemClickInterface) context;
+    public PostsListAdapter(Fragment fragment) {
+        mInflater = LayoutInflater.from(fragment.getContext());
+        itemClickInterface = (ItemClickInterface) fragment;
     }
 
     @Override
@@ -75,12 +76,13 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
     public void onBindViewHolder(PostViewHolder holder, int position) {
         if (posts != null) {
             final Post current = posts.get(position);
+            String writer_mail = current.getImage_firebase_path().split("\\*")[0];
             holder.tvWriter.setText(current.getWriter());
             holder.tvDishName.setText(current.getDish_name());
             holder.tvDate.setText(current.getDate());
             holder.tvLikes.setText(String.valueOf(current.getLikes()));
-            FirebaseStorageManager.downloadImage(current_user.getEmail() + "profile" , holder.profilePhoto);
-            FirebaseStorageManager.downloadImage(current.getWriter() + current.getDish_name(), holder.ivImageFromFireBase);
+            FirebaseStorageManager.downloadImage(writer_mail + "profile" , holder.profilePhoto);
+            FirebaseStorageManager.downloadImage(writer_mail + "*" + current.getDish_name(), holder.ivImageFromFireBase);
         }
     }
 
