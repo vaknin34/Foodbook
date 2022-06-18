@@ -94,14 +94,28 @@ public class NewPostFragment extends Fragment {
 
             format = new SimpleDateFormat("MM-dd HH:mm");
 
-            if(!dish_name.isEmpty() && !recipe.isEmpty() && !ingredients.isEmpty() && image_bytes.length > 0){
-                String firebase_image_path = current_user.getEmail() + "*" + dish_name;
-                Post post = new Post(dish_name, current_user.getDisplayName(), format.format(new Date()), ingredients, recipe, firebase_image_path, 0);
+            if (dish_name.isEmpty()) {
+                Toast.makeText(getContext(), "Dish name not valid", Toast.LENGTH_SHORT).show();
+            }
+            else if (recipe.isEmpty()) {
+                Toast.makeText(getContext(), "Recipe not valid", Toast.LENGTH_SHORT).show();
+            }
+            else if (ingredients.isEmpty()) {
+                Toast.makeText(getContext(), "Ingredients name not valid", Toast.LENGTH_SHORT).show();
+            }
+            else if (image == null) {
+                Toast.makeText(getContext(), "Image not valid", Toast.LENGTH_SHORT).show();
+            }
+
+            else{
+                String firebase_image_path = current_user.getEmail() + dish_name;
+                Post post = new Post(dish_name, current_user.getDisplayName(), current_user.getEmail(), format.format(new Date()), ingredients, recipe, firebase_image_path, 0);
                 FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
                 viewModel.add(post);
-//                Intent intent = new Intent(this, HomePage.class);
-//                intent.putExtra("user", current_user);
-//                startActivity(intent);
+                Toast.makeText(getContext(), "Post uploaded successfully", Toast.LENGTH_SHORT).show();
+                ((TextInputLayout)view.findViewById(R.id.etDishName)).getEditText().setText("");
+                ((TextInputLayout)view.findViewById(R.id.etRecipe)).getEditText().setText("");
+                ((TextInputLayout)view.findViewById(R.id.etIngredients)).getEditText().setText("");
             }
         });
     }

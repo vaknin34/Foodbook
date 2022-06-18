@@ -17,6 +17,8 @@ public class Post implements Serializable {
     private String dish_name;
     @ColumnInfo(name = "Writer name")
     private String writer;
+    @ColumnInfo(name = "Writer mail")
+    private String mail;
     @ColumnInfo(name = "date post was written")
     private String date;
     @ColumnInfo(name = "ingredients dish is made of")
@@ -31,10 +33,11 @@ public class Post implements Serializable {
 
     public Post() { }
 
-    public Post(String dish_name, String writer, String date, String ingredients, String recipe, String image_firebase_path, int likes) {
+    public Post(String dish_name, String writer, String mail, String date, String ingredients, String recipe, String image_firebase_path, int likes) {
         this.id = java.util.UUID.randomUUID().toString().replace("-","");
         this.dish_name = dish_name;
         this.writer = writer;
+        this.mail = mail;
         this.date = date;
         this.ingredients = ingredients;
         this.recipe = recipe;
@@ -64,6 +67,14 @@ public class Post implements Serializable {
 
     public void setWriter(String writer) {
         this.writer = writer;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getDate() {

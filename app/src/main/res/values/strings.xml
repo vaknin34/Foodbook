@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Foodbook</string>
     <string name="user">user</string>
-    <string name="DbName">postsv5</string>
+    <string name="DbName">postsv6</string>
     <string name="foodbook">foodbook</string>
     <string name="todo">TODO</string>
     <string name="post_a_dish">Post a dish</string>
     <string name="post_new_recipe">New Recipe</string>
     <string name="post_it">Post it</string>
-    <string name="upload_dish_photo">Upload Dish Photo</string>
+    <string name="upload_dish_image">Upload Dish Image</string>
     <string name="recipe">Recipe</string>
     <string name="ingredients">Ingredients</string>
     <string name="dish_name">Dish Name</string>

@@ -73,7 +73,7 @@ public class CreatePost extends AppCompatActivity {
 
             if(!dish_name.isEmpty() && !recipe.isEmpty() && !ingredients.isEmpty() && image_bytes.length > 0){
                 String firebase_image_path = current_user.getDisplayName() + dish_name;
-                Post post = new Post(dish_name, current_user.getDisplayName(), format.format(new Date()), ingredients, recipe, firebase_image_path, 0);
+                Post post = new Post(dish_name, current_user.getDisplayName(), current_user.getEmail(), format.format(new Date()), ingredients, recipe, firebase_image_path, 0);
                 FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
                 viewModel.add(post);
                 Intent intent = new Intent(this, HomePage.class);

@@ -34,7 +34,6 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
         private PostViewHolder(View itemView, ItemClickInterface itemClickInterface) {
             super(itemView);
             firebaseAuth = FirebaseAuth.getInstance();
-            current_user = firebaseAuth.getCurrentUser();
             tvWriter = itemView.findViewById(R.id.tvDish);
             tvDishName = itemView.findViewById(R.id.tvDishName);
             tvDate = itemView.findViewById(R.id.tvDate);
@@ -58,7 +57,6 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
     private List<Post> posts;
     private ItemClickInterface itemClickInterface;
     private FirebaseAuth firebaseAuth;
-    private FirebaseUser current_user;
 
 
     public PostsListAdapter(Fragment fragment) {
@@ -76,13 +74,12 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
     public void onBindViewHolder(PostViewHolder holder, int position) {
         if (posts != null) {
             final Post current = posts.get(position);
-            String writer_mail = current.getImage_firebase_path().split("\\*")[0];
             holder.tvWriter.setText(current.getWriter());
             holder.tvDishName.setText(current.getDish_name());
             holder.tvDate.setText(current.getDate());
             holder.tvLikes.setText(String.valueOf(current.getLikes()));
-            FirebaseStorageManager.downloadImage(writer_mail + "profile" , holder.profilePhoto);
-            FirebaseStorageManager.downloadImage(writer_mail + "*" + current.getDish_name(), holder.ivImageFromFireBase);
+            FirebaseStorageManager.downloadImage(current.getMail() + "profile" , holder.profilePhoto);
+            FirebaseStorageManager.downloadImage(current.getMail() + current.getDish_name(), holder.ivImageFromFireBase);
         }
     }
 

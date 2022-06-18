@@ -58,7 +58,6 @@ public class NavActivity extends AppCompatActivity {
                 case  R.id.log_out:
                     Intent intent = new Intent(this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    firebaseAuth.signOut();
                     startActivity(intent);
                     break;
             }

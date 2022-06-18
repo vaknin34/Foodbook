@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(this, "Name not valid", Toast.LENGTH_SHORT).show();
             }
             else if (image == null){
-                Toast.makeText(this, "Picture not valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Image not valid", Toast.LENGTH_SHORT).show();
             }
             else {
                 firebaseAuth.createUserWithEmailAndPassword(mail, password).addOnCompleteListener(task -> {
