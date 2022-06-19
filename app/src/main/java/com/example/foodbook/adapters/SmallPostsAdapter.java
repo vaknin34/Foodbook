@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodbook.R;
@@ -47,10 +48,9 @@ public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.Po
     private List<Post> posts;
     private ItemClickInterface itemClickInterface;
 
-
-    public SmallPostsAdapter(Context context) {
-        mInflater = LayoutInflater.from(context);
-        itemClickInterface = (ItemClickInterface) context;
+    public SmallPostsAdapter(Fragment fragment) {
+        mInflater = LayoutInflater.from(fragment.getContext());
+        itemClickInterface = (ItemClickInterface) fragment;
     }
 
     @Override

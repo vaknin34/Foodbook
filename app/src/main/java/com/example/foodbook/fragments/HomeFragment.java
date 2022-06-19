@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
         ((RecyclerView)view.findViewById(R.id.lstPosts)).setAdapter(adapter);
         ((RecyclerView)view.findViewById(R.id.lstPosts)).setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        viewModel.get().observe(this, posts -> {
+        viewModel.get().observe(getViewLifecycleOwner(), posts -> {
             adapter.setPosts(posts);
             ((SwipeRefreshLayout)view.findViewById(R.id.swipeRefresh)).setRefreshing(false);
         });
