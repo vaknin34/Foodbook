@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,12 +21,14 @@ import com.example.foodbook.interfaces.ItemClickInterface;
 public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.PostViewHolder> {
 
     class PostViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvDish;
+        private final ImageView ivDish;
+        private final TextView tvName;
         private final TextView tvLikesNum;
 
         private PostViewHolder(View itemView, ItemClickInterface itemClickInterface) {
             super(itemView);
-            tvDish = itemView.findViewById(R.id.tvDish);
+            ivDish = itemView.findViewById(R.id.ivDish);
+            tvName = itemView.findViewById(R.id.dishName);
             tvLikesNum = itemView.findViewById(R.id.tvLikesNum);
 
             itemView.setOnClickListener(view -> {
@@ -60,7 +63,8 @@ public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.Po
     public void onBindViewHolder(PostViewHolder holder, int position) {
         if (posts != null) {
             final Post current = posts.get(position);
-            holder.tvDish.setText(current.getDish_name());
+            FirebaseStorageManager.downloadImage(current.getMail() + current.getDish_name() , holder.ivDish);
+            holder.tvName.setText(current.getDish_name());
             holder.tvLikesNum.setText(String.valueOf(current.getLikes()));
         }
     }
