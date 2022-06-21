@@ -1,4 +1,4 @@
-package com.example.foodbook.activites;
+package com.example.foodbook.activities;
 
 import android.os.Bundle;
 
@@ -9,7 +9,7 @@ import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.databinding.ActivityPostDetailsBinding;
 import com.example.foodbook.models.Post;
 
-public class PostDetails extends AppCompatActivity {
+public class PostDetailsActivity extends AppCompatActivity {
 
     private ActivityPostDetailsBinding binding;
 

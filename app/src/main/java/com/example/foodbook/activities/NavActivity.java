@@ -1,4 +1,4 @@
-package com.example.foodbook.activites;
+package com.example.foodbook.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;

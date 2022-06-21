@@ -1,5 +1,6 @@
 package com.example.foodbook.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.foodbook.R;
+import com.example.foodbook.activities.PostDetailsActivity;
 import com.example.foodbook.adapters.PostsListAdapter;
 import com.example.foodbook.adapters.SmallPostsAdapter;
 import com.example.foodbook.databases.FirebaseStorageManager;
@@ -66,11 +68,13 @@ public class ProfileFragment extends Fragment implements ItemClickInterface {
             ((TextView)view.findViewById(R.id.postNum)).setText(postCount + " Posts");
             adapter.setPosts(posts);
         });
-        
+
     }
 
     @Override
     public void onItemClick(int position) {
-
+        Intent intent = new Intent(this.getContext(), PostDetailsActivity.class);
+        intent.putExtra("postDetails", adapter.getPosts().get(position));
+        startActivity(intent);
     }
 }

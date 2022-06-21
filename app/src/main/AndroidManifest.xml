@@ -11,16 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodbook">
         <activity
-            android:name=".activites.NavActivity"
+            android:name=".activities.NavActivity"
             android:exported="false" />
         <activity
-            android:name=".activites.RegisterActivity"
+            android:name=".activities.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".activites.PostDetails"
+            android:name=".activities.PostDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".activites.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
