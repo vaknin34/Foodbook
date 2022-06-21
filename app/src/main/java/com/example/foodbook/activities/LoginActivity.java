@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         firebaseAuth.addAuthStateListener(firebaseAuth -> {
                             Intent intent = new Intent(this, NavActivity.class);
-                            intent.putExtra("user", firebaseAuth.getCurrentUser());
                             startActivity(intent);
                         });
                     }

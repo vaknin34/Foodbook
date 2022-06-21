@@ -28,4 +28,10 @@
     <string name="like">like</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="writer">Writer</string>
+    <string name="date">Date</string>
+    <string name="recipe1">Recipe</string>
+    <string name="ingredients1">Ingredients</string>
+    <string name="edit">edit</string>
+    <string name="delete">delete</string>
 </resources>

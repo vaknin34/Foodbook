@@ -1,7 +1,10 @@
 package com.example.foodbook.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +15,16 @@ import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.databinding.ActivityNavBinding;
 import com.example.foodbook.databinding.ActivityPostDetailsBinding;
 import com.example.foodbook.models.Post;
+import com.example.foodbook.viewmodels.PostViewModel;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class PostDetailsActivity extends AppCompatActivity {
 
     ActivityPostDetailsBinding binding;
+    FirebaseUser current_user;
+    PostViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,15 +32,38 @@ public class PostDetailsActivity extends AppCompatActivity {
         binding = ActivityPostDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        current_user = FirebaseAuth.getInstance().getCurrentUser();
+        viewModel = new ViewModelProvider(this).get(PostViewModel.class);
+
         Post post = (Post) getIntent().getSerializableExtra(getString(R.string.postDetails));
 
-        binding.expandableText.setText("dskfjkjdklfjkldfjkdlfjdklfjdlfjdf;lj");
-
         binding.etDishName.setText(post.getDish_name());
-        binding.etWriter.setText(post.getWriter());
-        binding.etDate.setText(post.getDate());
-//        binding.etIngredients.setText(post.getIngredients());
-        binding.etRecipe.setText(post.getRecipe());
+        binding.etWriter.getEditText().setText(post.getWriter());
+        binding.etDate.getEditText().setText(post.getDate());
+        binding.etIngredients.getEditText().setText(post.getIngredients());
+        binding.etRecipe.getEditText().setText(post.getRecipe());
         FirebaseStorageManager.downloadImage(post.getMail() + post.getDish_name(), binding.ivDishPhoto);
+
+        if (current_user.getEmail().equals(post.getMail())) {
+            binding.deleteBtn.setVisibility(View.VISIBLE);
+            binding.editBtn.setVisibility(View.VISIBLE);
+
+            binding.deleteBtn.setOnClickListener(view -> {
+                new MaterialAlertDialogBuilder(this)
+                        .setMessage("Are you sure you want to delete this post?")
+                        .setPositiveButton("Yes", (dialogInterface, i) -> {
+                            Intent intent = new Intent(this, NavActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            startActivity(intent);
+                            viewModel.delete(post);
+                        })
+                        .setNegativeButton("No", (dialogInterface, i) -> {})
+                        .show();
+            });
+
+            binding.editBtn.setOnClickListener(view -> {
+
+            });
+        }
     }
 }

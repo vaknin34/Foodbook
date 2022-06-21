@@ -84,6 +84,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
                         android:fontFamily="@font/abeezee" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -100,6 +102,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="113dp"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
                         android:fontFamily="@font/abeezee" />
 
                 </com.google.android.material.textfield.TextInputLayout>
