@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.foodbook.R;
 import com.example.foodbook.activities.PostDetailsActivity;
-import com.example.foodbook.adapters.PostsListAdapter;
 import com.example.foodbook.adapters.SmallPostsAdapter;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.interfaces.ItemClickInterface;
@@ -75,6 +73,7 @@ public class ProfileFragment extends Fragment implements ItemClickInterface {
     public void onItemClick(int position) {
         Intent intent = new Intent(this.getContext(), PostDetailsActivity.class);
         intent.putExtra("postDetails", adapter.getPosts().get(position));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 }
