@@ -46,6 +46,10 @@ public class PostsRepository {
         post_fire_db.delete(post);
     }
 
+    public void update(Post post) {
+        post_fire_db.delete(post);
+    }
+
     public void reload() {
         post_fire_db.reload();
     }

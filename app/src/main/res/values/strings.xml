@@ -34,4 +34,6 @@
     <string name="ingredients1">Ingredients</string>
     <string name="edit">edit</string>
     <string name="delete">delete</string>
+    <string name="save">save</string>
+    <string name="dish_name1">Dish Name</string>
 </resources>

@@ -47,7 +47,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/etDish_name"
+                android:id="@+id/title_info"
                 android:layout_width="306dp"
                 android:layout_height="57dp"
                 android:layout_alignParentStart="true"
@@ -59,8 +59,9 @@
                 android:layout_marginTop="21dp"
                 android:layout_marginEnd="51dp"
                 android:fontFamily="@font/abeezee"
+                android:text="Post Info"
                 android:textAlignment="center"
-                android:textSize="34sp"
+                android:textSize="40sp"
                 app:lineHeight="34sp" />
 
             <ImageView
@@ -72,6 +73,22 @@
                 android:layout_marginTop="21dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="0dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etDishName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="352dp"
+                android:layout_height="71dp"
+                android:layout_marginLeft="15dp"
+                android:hint="@string/dish_name1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/abeezee"
+                    android:enabled="false"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etWriter"
@@ -170,6 +187,21 @@
                     android:backgroundTint="#000000"
                     android:fontFamily="@font/abeezee"
                     android:text="@string/edit"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="invisible"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <Button
+                    android:id="@+id/save_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="80dp"
+                    android:backgroundTint="#3F51B5"
+                    android:fontFamily="@font/abeezee"
+                    android:text="@string/save"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

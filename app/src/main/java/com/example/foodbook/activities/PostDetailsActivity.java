@@ -37,7 +37,7 @@ public class PostDetailsActivity extends AppCompatActivity {
 
         Post post = (Post) getIntent().getSerializableExtra(getString(R.string.postDetails));
 
-        binding.etDishName.setText(post.getDish_name());
+        binding.etDishName.getEditText().setText(post.getDish_name());
         binding.etWriter.getEditText().setText(post.getWriter());
         binding.etDate.getEditText().setText(post.getDate());
         binding.etIngredients.getEditText().setText(post.getIngredients());
@@ -62,7 +62,26 @@ public class PostDetailsActivity extends AppCompatActivity {
             });
 
             binding.editBtn.setOnClickListener(view -> {
+                binding.deleteBtn.setVisibility(View.INVISIBLE);
+                binding.editBtn.setVisibility(View.INVISIBLE);
+                binding.saveBtn.setVisibility(View.VISIBLE);
 
+                binding.etDishName.getEditText().setEnabled(true);
+                binding.etIngredients.getEditText().setEnabled(true);
+                binding.etRecipe.getEditText().setEnabled(true);
+
+                binding.saveBtn.setOnClickListener(view1 -> {
+
+
+                    binding.deleteBtn.setVisibility(View.VISIBLE);
+                    binding.editBtn.setVisibility(View.VISIBLE);
+                    binding.saveBtn.setVisibility(View.INVISIBLE);
+
+                    binding.etDishName.getEditText().setEnabled(false);
+                    binding.etIngredients.getEditText().setEnabled(false);
+                    binding.etRecipe.getEditText().setEnabled(false);
+
+                });
             });
         }
     }

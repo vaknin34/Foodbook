@@ -56,6 +56,11 @@ public class PostFirebaseDB {
         myRef.child(String.valueOf(post.getId())).removeValue();
     }
 
+//    public void update(Post post) {
+//        myRef.child(String.valueOf(post.getId())).updateChildren();
+//    }
+
+
     public void reload() {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
