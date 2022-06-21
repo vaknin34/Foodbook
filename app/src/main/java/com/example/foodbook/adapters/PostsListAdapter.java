@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.foodbook.R;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.models.Post;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -33,7 +31,6 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
 
         private PostViewHolder(View itemView, ItemClickInterface itemClickInterface) {
             super(itemView);
-            firebaseAuth = FirebaseAuth.getInstance();
             tvWriter = itemView.findViewById(R.id.tvDish);
             tvDishName = itemView.findViewById(R.id.tvDishName);
             tvDate = itemView.findViewById(R.id.tvDate);
@@ -56,8 +53,6 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
     private final LayoutInflater mInflater;
     private List<Post> posts;
     private ItemClickInterface itemClickInterface;
-    private FirebaseAuth firebaseAuth;
-
 
     public PostsListAdapter(Fragment fragment) {
         mInflater = LayoutInflater.from(fragment.getContext());

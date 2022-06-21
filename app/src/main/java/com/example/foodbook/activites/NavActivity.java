@@ -1,14 +1,10 @@
 package com.example.foodbook.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.example.foodbook.R;
 import com.example.foodbook.databinding.ActivityNavBinding;
 import com.example.foodbook.fragments.HomeFragment;
@@ -16,7 +12,6 @@ import com.example.foodbook.fragments.NewPostFragment;
 import com.example.foodbook.fragments.ProfileFragment;
 
 public class NavActivity extends AppCompatActivity {
-    Context context;
     private ActivityNavBinding binding;
 
     @Override
@@ -24,7 +19,6 @@ public class NavActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityNavBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        context = this;
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

@@ -1,8 +1,6 @@
 package com.example.foodbook.activites;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,16 +9,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.example.foodbook.R;
 import com.example.foodbook.databases.FirebaseStorageManager;
-import com.example.foodbook.databinding.ActivityMainBinding;
 import com.example.foodbook.databinding.ActivityRegisterBinding;
-import com.example.foodbook.viewmodels.PostViewModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -63,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (mail.isEmpty() || !mail.matches("^(.+)@(\\S+)$")) {
                 Toast.makeText(this, "Email not valid", Toast.LENGTH_SHORT).show();
             }
-            else if (password.isEmpty()){
+            else if (password.isEmpty() || password.length() < 6){
                 Toast.makeText(this, "Password not valid", Toast.LENGTH_SHORT).show();
             }
             else if (name.isEmpty()){

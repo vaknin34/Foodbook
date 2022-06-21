@@ -31,6 +31,13 @@ public class PostsRepository {
         return postListData;
     }
 
+    public LiveData<List<Post>> getByMail(String mail) {
+        new Thread(()->{
+            postListData.postValue(post_dao.findByMail(mail));
+        }).start();
+        return postListData;
+    }
+
     public void add(Post post) {
         post_fire_db.AddPost(post);
     }

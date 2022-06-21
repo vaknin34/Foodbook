@@ -27,6 +27,7 @@ public class ProfileFragment extends Fragment implements ItemClickInterface {
     FirebaseUser current_user;
     private PostViewModel viewModel;
     private SmallPostsAdapter adapter;
+    int postCount = 0;
 
     public ProfileFragment() { }
 
@@ -60,10 +61,12 @@ public class ProfileFragment extends Fragment implements ItemClickInterface {
         ((RecyclerView)view.findViewById(R.id.smallPostsRv)).setAdapter(adapter);
         ((RecyclerView)view.findViewById(R.id.smallPostsRv)).setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        viewModel.get().observe(getViewLifecycleOwner(), posts -> {
+        viewModel.getByMail(current_user.getEmail()).observe(getViewLifecycleOwner(), posts -> {
+            postCount = posts.size();
+            ((TextView)view.findViewById(R.id.postNum)).setText(postCount + " Posts");
             adapter.setPosts(posts);
         });
-
+        
     }
 
     @Override

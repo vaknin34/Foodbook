@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,6 +67,11 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
 
     @Override
     public void onItemClick(int position) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.addToBackStack(null);
+        transaction.add(R.id.fragmentsFrame, HomeFragment.newInstance(), "whatever");
+        transaction.commit();
         Intent intent = new Intent(this.getContext(), PostDetails.class);
         intent.putExtra("postDetails", adapter.getPosts().get(position));
         startActivity(intent);
