@@ -36,4 +36,5 @@
     <string name="delete">delete</string>
     <string name="save">save</string>
     <string name="dish_name1">Dish Name</string>
+    <string name="cancel">cancel</string>
 </resources>

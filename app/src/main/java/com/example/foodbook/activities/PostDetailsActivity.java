@@ -62,27 +62,39 @@ public class PostDetailsActivity extends AppCompatActivity {
             });
 
             binding.editBtn.setOnClickListener(view -> {
-                binding.deleteBtn.setVisibility(View.INVISIBLE);
-                binding.editBtn.setVisibility(View.INVISIBLE);
-                binding.saveBtn.setVisibility(View.VISIBLE);
-
-                binding.etDishName.getEditText().setEnabled(true);
-                binding.etIngredients.getEditText().setEnabled(true);
-                binding.etRecipe.getEditText().setEnabled(true);
+                GetEditState();
 
                 binding.saveBtn.setOnClickListener(view1 -> {
+                    GetNonEditState();
+                    //save changes
+                });
 
-
-                    binding.deleteBtn.setVisibility(View.VISIBLE);
-                    binding.editBtn.setVisibility(View.VISIBLE);
-                    binding.saveBtn.setVisibility(View.INVISIBLE);
-
-                    binding.etDishName.getEditText().setEnabled(false);
-                    binding.etIngredients.getEditText().setEnabled(false);
-                    binding.etRecipe.getEditText().setEnabled(false);
-
+                binding.cnlBtn.setOnClickListener(view1 -> {
+                    GetNonEditState();
                 });
             });
         }
+    }
+
+    private void GetEditState() {
+        binding.deleteBtn.setVisibility(View.INVISIBLE);
+        binding.editBtn.setVisibility(View.INVISIBLE);
+        binding.saveBtn.setVisibility(View.VISIBLE);
+        binding.cnlBtn.setVisibility(View.VISIBLE);
+
+        binding.etDishName.getEditText().setEnabled(true);
+        binding.etIngredients.getEditText().setEnabled(true);
+        binding.etRecipe.getEditText().setEnabled(true);
+    }
+
+    private void GetNonEditState() {
+        binding.deleteBtn.setVisibility(View.VISIBLE);
+        binding.editBtn.setVisibility(View.VISIBLE);
+        binding.saveBtn.setVisibility(View.INVISIBLE);
+        binding.cnlBtn.setVisibility(View.INVISIBLE);
+
+        binding.etDishName.getEditText().setEnabled(false);
+        binding.etIngredients.getEditText().setEnabled(false);
+        binding.etRecipe.getEditText().setEnabled(false);
     }
 }
