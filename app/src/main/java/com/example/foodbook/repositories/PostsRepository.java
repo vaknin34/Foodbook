@@ -17,12 +17,16 @@ public class PostsRepository {
     private PostDao post_dao;
     private PostFirebaseDB post_fire_db;
     private PostListData postListData;
+    private PostListData postListDataFilterEmail;
+    private PostListData postListDataFilterWriterAndDishName;
     private static PostsRepository instance = new PostsRepository();
 
     private PostsRepository() {
         PostRoomDatabase db = PostRoomDatabase.getInstance();
         this.post_dao = db.postDao();
         this.postListData = new PostListData();
+        this.postListDataFilterEmail = new PostListData();
+        this.postListDataFilterWriterAndDishName = new PostListData();
         this.post_fire_db = new PostFirebaseDB(post_dao, postListData);
     }
     public static PostsRepository getInstance(){
@@ -35,16 +39,16 @@ public class PostsRepository {
 
     public LiveData<List<Post>> getByMail(String mail) {
         new Thread(()->{
-            postListData.postValue(post_dao.findByMail(mail));
+            postListDataFilterEmail.postValue(post_dao.findByMail(mail));
         }).start();
-        return postListData;
+        return postListDataFilterEmail;
     }
 
     public LiveData<List<Post>> getByWriterNameAndDishName(String writer, String dish_name) {
         new Thread(()->{
-            postListData.postValue(post_dao.findByWriterNameAndDishName(writer, dish_name));
+            postListDataFilterWriterAndDishName.postValue(post_dao.findByWriterNameAndDishName(writer, dish_name));
         }).start();
-        return postListData;
+        return postListDataFilterWriterAndDishName;
     }
 
     public void add(Post post) {
