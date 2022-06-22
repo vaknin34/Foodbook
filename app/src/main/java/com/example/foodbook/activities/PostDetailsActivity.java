@@ -71,6 +71,9 @@ public class PostDetailsActivity extends AppCompatActivity {
 
                 binding.cnlBtn.setOnClickListener(view1 -> {
                     GetNonEditState();
+                    binding.etDishName.getEditText().setText(post.getDish_name());
+                    binding.etIngredients.getEditText().setText(post.getIngredients());
+                    binding.etRecipe.getEditText().setText(post.getRecipe());
                 });
             });
         }
