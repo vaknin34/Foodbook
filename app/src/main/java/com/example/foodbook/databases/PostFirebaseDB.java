@@ -55,12 +55,7 @@ public class PostFirebaseDB {
     public void delete(Post post) {
         myRef.child(String.valueOf(post.getId())).removeValue();
     }
-
-//    public void update(Post post) {
-//        myRef.child(String.valueOf(post.getId())).updateChildren();
-//    }
-
-
+    
     public void reload() {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -85,5 +80,11 @@ public class PostFirebaseDB {
             }
         });
 
+    }
+
+    public void update(Post post) {
+        myRef.child(post.getId()).child("dish_name").setValue(post.getDish_name());
+        myRef.child(post.getId()).child("ingredients").setValue(post.getIngredients());
+        myRef.child(post.getId()).child("recipe").setValue(post.getRecipe());
     }
 }

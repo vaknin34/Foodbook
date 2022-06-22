@@ -1,18 +1,14 @@
 package com.example.foodbook.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foodbook.R;
 import com.example.foodbook.databases.FirebaseStorageManager;
-import com.example.foodbook.databinding.ActivityNavBinding;
 import com.example.foodbook.databinding.ActivityPostDetailsBinding;
 import com.example.foodbook.models.Post;
 import com.example.foodbook.viewmodels.PostViewModel;
@@ -66,6 +62,10 @@ public class PostDetailsActivity extends AppCompatActivity {
 
                 binding.saveBtn.setOnClickListener(view1 -> {
                     GetNonEditState();
+                    post.setDish_name(binding.etDishName.getEditText().getText().toString());
+                    post.setIngredients(binding.etIngredients.getEditText().getText().toString());
+                    post.setRecipe(binding.etRecipe.getEditText().getText().toString());
+                    viewModel.update(post);
                     //save changes
                 });
 
