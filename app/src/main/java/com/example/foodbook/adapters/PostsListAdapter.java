@@ -23,6 +23,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import com.example.foodbook.interfaces.ItemClickInterface;
 import com.example.foodbook.viewmodels.PostViewModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.PostViewHolder> {
@@ -62,12 +64,15 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
     private List<Post> posts;
     private ItemClickInterface itemClickInterface;
     PostViewModel viewModel;
+    FirebaseUser current_user;
 
 
     public PostsListAdapter(Fragment fragment) {
         mInflater = LayoutInflater.from(fragment.getContext());
         itemClickInterface = (ItemClickInterface) fragment;
         viewModel = new ViewModelProvider(fragment).get(PostViewModel.class);
+        current_user = FirebaseAuth.getInstance().getCurrentUser();
+
     }
 
     @Override
@@ -106,18 +111,18 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
 
             likeStatus.addObserver(observer);
 
-            viewModel.getLikeStatus(current.getMail(), current.getId(), likeStatus);
+            viewModel.getLikeStatus(current_user.getEmail(), current.getId(), likeStatus);
 
 
             holder.like_btn.setOnClickListener(view -> {
                 if (local_like_status.get().equals("likeNotPressed")) {
                     current.setLikes(current.getLikes() + 1);
-                    Like like = new Like(current.getMail(), current.getId());
+                    Like like = new Like(current_user.getEmail(), current.getId());
                     viewModel.addLike(like);
                 }
                 else {
                     current.setLikes(current.getLikes() - 1);
-                    viewModel.removeLike(current.getMail(), current.getId());
+                    viewModel.removeLike(current_user.getEmail(), current.getId());
                 }
                 viewModel.update(current);
                 holder.tvLikes.setText(String.valueOf(current.getLikes()));

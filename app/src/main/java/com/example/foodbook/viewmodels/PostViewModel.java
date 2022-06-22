@@ -26,6 +26,10 @@ public class PostViewModel extends ViewModel {
         return posts;
     }
 
+    public LiveData<List<Post>> getByWriterNameAndDishName(String writer, String dish_name) {
+        posts = repository.getByWriterNameAndDishName(writer, dish_name);
+        return posts;
+    }
 
     public void add(Post post) {repository.add(post);}
 
@@ -38,7 +42,6 @@ public class PostViewModel extends ViewModel {
     public void getLikeStatus(String user_mail, String post_id, LikeStatus likeStatus){
         repository.getLikeStatus(user_mail, post_id, likeStatus);
     }
-
 
     public void addLike(Like like) {
         repository.addLike(like);

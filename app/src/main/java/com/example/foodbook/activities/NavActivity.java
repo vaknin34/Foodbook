@@ -10,6 +10,7 @@ import com.example.foodbook.databinding.ActivityNavBinding;
 import com.example.foodbook.fragments.HomeFragment;
 import com.example.foodbook.fragments.NewPostFragment;
 import com.example.foodbook.fragments.ProfileFragment;
+import com.example.foodbook.fragments.SearchFragment;
 
 public class NavActivity extends AppCompatActivity {
     private ActivityNavBinding binding;
@@ -39,6 +40,12 @@ public class NavActivity extends AppCompatActivity {
                     transaction3.addToBackStack(null);
                     transaction3.replace(R.id.fragmentsFrame, ProfileFragment.newInstance(), "whatever");
                     transaction3.commit();
+                    break;
+                case R.id.search:
+                    FragmentTransaction transaction4 = fragmentManager.beginTransaction();
+                    transaction4.addToBackStack(null);
+                    transaction4.replace(R.id.fragmentsFrame, SearchFragment.newInstance(), "whatever");
+                    transaction4.commit();
                     break;
                 case R.id.new_post:
                     FragmentTransaction transaction2 = fragmentManager.beginTransaction();

@@ -40,4 +40,9 @@
     <string name="new_post">New Post</string>
     <string name="log_out">Log Out</string>
     <string name="search">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="post_info">Post Info</string>
+    <string name="writer_name">Writer Name</string>
+    <string name="dish_name2">Dish Name</string>
 </resources>

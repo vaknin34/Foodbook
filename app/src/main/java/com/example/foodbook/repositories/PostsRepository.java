@@ -40,6 +40,13 @@ public class PostsRepository {
         return postListData;
     }
 
+    public LiveData<List<Post>> getByWriterNameAndDishName(String writer, String dish_name) {
+        new Thread(()->{
+            postListData.postValue(post_dao.findByWriterNameAndDishName(writer, dish_name));
+        }).start();
+        return postListData;
+    }
+
     public void add(Post post) {
         post_fire_db.AddPost(post);
     }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="547dp"
+    tools:context=".fragments.SearchFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="547dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_WriterName"
+            android:layout_width="306dp"
+            android:layout_height="57dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="51dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="51dp"
+            android:fontFamily="@font/abeezee"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            app:lineHeight="34sp"
+            app:startIconDrawable="@drawable/ic_search"
+            android:hint="@string/writer_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_writer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abeezee" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_DishName"
+            android:layout_width="306dp"
+            android:layout_height="57dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="51dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="51dp"
+            android:fontFamily="@font/abeezee"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            app:lineHeight="34sp"
+            app:startIconDrawable="@drawable/ic_search"
+            android:hint="@string/dish_name2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_dish_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abeezee" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="26dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="257dp"
+            android:backgroundTint="#3F51B5"
+            android:fontFamily="@font/abeezee"
+            android:text="Search"
+            android:textSize="16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_serach_results"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
+</FrameLayout>
