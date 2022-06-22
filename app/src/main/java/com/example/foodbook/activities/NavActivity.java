@@ -31,19 +31,19 @@ public class NavActivity extends AppCompatActivity {
                 case R.id.home:
                     FragmentTransaction transaction1 = fragmentManager.beginTransaction();
                     transaction1.addToBackStack(null);
-                    transaction1.add(R.id.fragmentsFrame, HomeFragment.newInstance(), "whatever");
+                    transaction1.replace(R.id.fragmentsFrame, HomeFragment.newInstance(), "whatever");
                     transaction1.commit();
                     break;
                 case R.id.profile:
                     FragmentTransaction transaction3 = fragmentManager.beginTransaction();
                     transaction3.addToBackStack(null);
-                    transaction3.add(R.id.fragmentsFrame, ProfileFragment.newInstance(), "whatever");
+                    transaction3.replace(R.id.fragmentsFrame, ProfileFragment.newInstance(), "whatever");
                     transaction3.commit();
                     break;
                 case R.id.new_post:
                     FragmentTransaction transaction2 = fragmentManager.beginTransaction();
                     transaction2.addToBackStack(null);
-                    transaction2.add(R.id.fragmentsFrame, NewPostFragment.newInstance(), "whatever");
+                    transaction2.replace(R.id.fragmentsFrame, NewPostFragment.newInstance(), "whatever");
                     transaction2.commit();
                     break;
                 case  R.id.log_out:
