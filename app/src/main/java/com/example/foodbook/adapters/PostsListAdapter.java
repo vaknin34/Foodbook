@@ -96,8 +96,11 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
             observer = (observable, o) -> {
                 if (o.equals("likePressed")) {
                     local_like_status.set("likePressed");
+                    holder.like_btn.setImageResource(R.drawable.ic_unlike);
+
                 } else {
                     local_like_status.set("likeNotPressed");
+                    holder.like_btn.setImageResource(R.drawable.ic_like);
                 }
             };
 
@@ -111,14 +114,10 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
                     current.setLikes(current.getLikes() + 1);
                     Like like = new Like(current.getMail(), current.getId());
                     viewModel.addLike(like);
-                    holder.like_btn.setImageResource(R.drawable.ic_unlike);
-                    local_like_status.set("likePressed");
                 }
                 else {
                     current.setLikes(current.getLikes() - 1);
                     viewModel.removeLike(current.getMail(), current.getId());
-                    holder.like_btn.setImageResource(R.drawable.ic_like);
-                    local_like_status.set("likeNotPressed");
                 }
                 viewModel.update(current);
                 holder.tvLikes.setText(String.valueOf(current.getLikes()));
