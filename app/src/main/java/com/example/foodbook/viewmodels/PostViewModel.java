@@ -3,6 +3,8 @@ package com.example.foodbook.viewmodels;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.foodbook.models.Like;
+import com.example.foodbook.models.LikeStatus;
 import com.example.foodbook.models.Post;
 import com.example.foodbook.repositories.PostsRepository;
 
@@ -33,8 +35,16 @@ public class PostViewModel extends ViewModel {
 
     public void reload(){repository.reload();}
 
+    public void getLikeStatus(String user_mail, String post_id, LikeStatus likeStatus){
+        repository.getLikeStatus(user_mail, post_id, likeStatus);
+    }
 
 
+    public void addLike(Like like) {
+        repository.addLike(like);
+    }
 
-
+    public void removeLike(String user_mail, String post_id) {
+        repository.removeLike(user_mail, post_id);
+    }
 }

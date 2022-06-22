@@ -4,8 +4,12 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.foodbook.models.Like;
+import com.example.foodbook.models.LikeStatus;
 import com.example.foodbook.models.Post;
 import com.example.foodbook.repositories.PostsRepository;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,6 +22,7 @@ import java.util.List;
 public class PostFirebaseDB {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = database.getReference("Posts");
+    private DatabaseReference myLikeRef = database.getReference("Likes");
     private PostDao post_dao;
     private PostsRepository.PostListData postListData;
 
@@ -86,5 +91,27 @@ public class PostFirebaseDB {
         myRef.child(post.getId()).child("dish_name").setValue(post.getDish_name());
         myRef.child(post.getId()).child("ingredients").setValue(post.getIngredients());
         myRef.child(post.getId()).child("recipe").setValue(post.getRecipe());
+        myRef.child(post.getId()).child("likes").setValue(post.getLikes());
+    }
+
+    public void getLikeStatus(String user_mail, String post_id, LikeStatus likeStatus) {
+        String id = user_mail.replace(".", "").replace("@", "") + post_id;
+        myLikeRef.child(id).get().addOnSuccessListener(dataSnapshot -> {
+            if (dataSnapshot.getValue() == null)
+                likeStatus.setStatus("likeNotPressed");
+            else {
+                likeStatus.setStatus("likePressed");
+            }
+        });
+    }
+
+    public void addLike(Like like) {
+        String id = like.getUser_mail().replace(".", "").replace("@", "") + like.getPost_id();
+        myLikeRef.child(id).setValue(like);
+    }
+
+    public void removeLike(String user_mail, String post_id) {
+        String id = user_mail.replace(".", "").replace("@", "") + post_id;
+        myLikeRef.child(id).removeValue();
     }
 }

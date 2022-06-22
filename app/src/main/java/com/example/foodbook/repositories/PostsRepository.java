@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.foodbook.databases.PostDao;
 import com.example.foodbook.databases.PostFirebaseDB;
 import com.example.foodbook.databases.PostRoomDatabase;
+import com.example.foodbook.models.Like;
+import com.example.foodbook.models.LikeStatus;
 import com.example.foodbook.models.Post;
 
 import java.util.ArrayList;
@@ -52,6 +54,18 @@ public class PostsRepository {
 
     public void reload() {
         post_fire_db.reload();
+    }
+
+    public void getLikeStatus(String user_mail, String post_id, LikeStatus likeStatus) {
+        post_fire_db.getLikeStatus(user_mail, post_id, likeStatus);
+    }
+
+    public void addLike(Like like) {
+        post_fire_db.addLike(like);
+    }
+
+    public void removeLike(String user_mail, String post_id) {
+        post_fire_db.removeLike(user_mail, post_id);
     }
 
     public class PostListData extends MutableLiveData<List<Post>> {

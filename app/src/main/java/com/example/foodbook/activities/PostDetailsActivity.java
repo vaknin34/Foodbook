@@ -66,7 +66,6 @@ public class PostDetailsActivity extends AppCompatActivity {
                     post.setIngredients(binding.etIngredients.getEditText().getText().toString());
                     post.setRecipe(binding.etRecipe.getEditText().getText().toString());
                     viewModel.update(post);
-                    //save changes
                 });
 
                 binding.cnlBtn.setOnClickListener(view1 -> {
