@@ -10,7 +10,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="245dp"
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,10 +22,11 @@
             android:orientation="vertical">
 
             <!-- Media -->
+
             <ImageView
                 android:id="@+id/ivDish"
                 android:layout_width="match_parent"
-                android:layout_height="194dp"
+                android:layout_height="130dp"
                 android:scaleType="centerCrop" />
 
             <LinearLayout

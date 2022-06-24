@@ -26,8 +26,13 @@ public class PostViewModel extends ViewModel {
         return posts;
     }
 
-    public LiveData<List<Post>> getByWriterNameDishName(String writer, String dish_name) {
-        posts = repository.getByWriterNameDishName(writer, dish_name);
+    public LiveData<List<Post>> getByUserName(String user_name) {
+        posts = repository.getByUserName(user_name);
+        return posts;
+    }
+
+    public LiveData<List<Post>> getByDishName(String dish_name) {
+        posts = repository.getByDishName(dish_name);
         return posts;
     }
 

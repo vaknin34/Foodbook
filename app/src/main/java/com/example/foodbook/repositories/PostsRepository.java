@@ -9,6 +9,7 @@ import com.example.foodbook.databases.PostRoomDatabase;
 import com.example.foodbook.models.Like;
 import com.example.foodbook.models.LikeStatus;
 import com.example.foodbook.models.Post;
+import com.example.foodbook.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,8 @@ public class PostsRepository {
     private PostFirebaseDB post_fire_db;
     private PostListData postListData;
     private PostListData postListDataFilterEmail;
-    private PostListData postListDataFilterWriterDishName;
+    private PostListData postListDataFilterDishName;
+    private PostListData postListDataFilterUserName;
     private static PostsRepository instance = new PostsRepository();
 
     private PostsRepository() {
@@ -26,7 +28,8 @@ public class PostsRepository {
         this.post_dao = db.postDao();
         this.postListData = new PostListData();
         this.postListDataFilterEmail = new PostListData();
-        this.postListDataFilterWriterDishName = new PostListData();
+        this.postListDataFilterDishName = new PostListData();
+        this.postListDataFilterUserName = new PostListData();
         this.post_fire_db = new PostFirebaseDB(post_dao, postListData);
     }
     public static PostsRepository getInstance(){
@@ -44,14 +47,18 @@ public class PostsRepository {
         return postListDataFilterEmail;
     }
 
-    public LiveData<List<Post>> getByWriterNameDishName(String writer, String dish_name) {
+    public LiveData<List<Post>> getByDishName(String dish_name) {
         new Thread(()->{
-            if (writer.isEmpty() || dish_name.isEmpty())
-                postListDataFilterWriterDishName.postValue(post_dao.findByWriterNameOrDishName(writer, dish_name));
-            else
-                postListDataFilterWriterDishName.postValue(post_dao.findByWriterNameAndDishName(writer, dish_name));
+            postListDataFilterDishName.postValue(post_dao.findByDishName(dish_name));
         }).start();
-        return postListDataFilterWriterDishName;
+        return postListDataFilterDishName;
+    }
+
+    public LiveData<List<Post>> getByUserName(String user_name) {
+        new Thread(()->{
+            postListDataFilterUserName.postValue(post_dao.findByUserName(user_name));
+        }).start();
+        return postListDataFilterUserName;
     }
 
     public void add(Post post) {

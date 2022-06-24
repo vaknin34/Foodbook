@@ -3,19 +3,22 @@ package com.example.foodbook.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.foodbook.R;
 import com.example.foodbook.activities.PostDetailsActivity;
 import com.example.foodbook.adapters.SmallPostsAdapter;
 import com.example.foodbook.adapters.UsersAdapter;
 import com.example.foodbook.interfaces.ItemClickInterface;
+import com.example.foodbook.models.Post;
+import com.example.foodbook.models.User;
 import com.example.foodbook.viewmodels.PostViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -51,7 +54,10 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
         super.onViewCreated(view, savedInstanceState);
 
         view.findViewById(R.id.search_btn).setOnClickListener(view1 -> {
-            query = ((TextInputEditText)view.findViewById(R.id.search)).getText().toString();
+            view.findViewById(R.id.users_title).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.posts_title).setVisibility(View.VISIBLE);
+
+            query = ((TextInputEditText)view.findViewById(R.id.search_query)).getText().toString();
 
             viewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
@@ -60,9 +66,20 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
             ((RecyclerView)view.findViewById(R.id.rv_user_results)).setLayoutManager(new LinearLayoutManager(this.getContext()));
 
             postsAdapter = new SmallPostsAdapter(this);
-            ((RecyclerView)view.findViewById(R.id.rv_post_results)).setAdapter(usersAdapter);
+            ((RecyclerView)view.findViewById(R.id.rv_post_results)).setAdapter(postsAdapter);
             ((RecyclerView)view.findViewById(R.id.rv_post_results)).setLayoutManager(new LinearLayoutManager(this.getContext()));
 
+            if (usersAdapter != null) {
+                viewModel.getByUserName(query).observe(getViewLifecycleOwner(), posts -> {
+                    usersAdapter.setPosts(posts);
+                });
+            }
+
+            if (postsAdapter != null) {
+                viewModel.getByDishName(query).observe(getViewLifecycleOwner(), posts -> {
+                    postsAdapter.setPosts(posts);
+                });
+            }
         });
     }
 
@@ -70,21 +87,27 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
     public void onResume() {
         super.onResume();
 
-        viewModel.getUsersByUserName(query).observe(getViewLifecycleOwner(), users -> {
-            usersAdapter.setUsers(users);
-        });
+        if (usersAdapter != null) {
+            viewModel.getByUserName(query).observe(getViewLifecycleOwner(), posts -> {
+                usersAdapter.setPosts(posts);
+            });
+        }
 
-        viewModel.getPostsByDishName(query).observe(getViewLifecycleOwner(), posts -> {
-            postsAdapter.setPosts(posts);
-        });
+        if (postsAdapter != null) {
+            viewModel.getByDishName(query).observe(getViewLifecycleOwner(), posts -> {
+                postsAdapter.setPosts(posts);
+            });
+        }
 
     }
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(this.getContext(), PostDetailsActivity.class);
-        intent.putExtra("postDetails", adapter.getPosts().get(position));
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.addToBackStack(null);
+        User user = new User(usersAdapter.getPosts().get(position).getMail(), usersAdapter.getPosts().get(position).getWriter());
+        transaction.replace(R.id.fragmentsFrame, ProfileFragment.newInstance(user), "whatever");
+        transaction.commit();
     }
 }

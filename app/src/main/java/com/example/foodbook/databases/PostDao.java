@@ -18,11 +18,11 @@ public interface PostDao {
     @Query("SELECT * FROM post WHERE `Writer mail` LIKE :mail")
     List<Post> findByMail(String mail);
 
-    @Query("SELECT * FROM post WHERE `Writer name` LIKE :writer AND `dish name` LIKE '%' || :dish_name || '%'" )
-    List<Post> findByWriterNameAndDishName(String writer, String dish_name);
+    @Query("SELECT * FROM post WHERE `dish name` LIKE '%' || :dish_name || '%'" )
+    List<Post> findByDishName(String dish_name);
 
-    @Query("SELECT * FROM post WHERE `Writer name` LIKE :writer OR `dish name` LIKE '%' || :dish_name || '%'" )
-    List<Post> findByWriterNameOrDishName(String writer, String dish_name);
+    @Query("SELECT * FROM post WHERE `Writer name` LIKE '%' || :user_name || '%'" )
+    List<Post> findByUserName(String user_name);
 
     @Insert
     void insertAll(List<Post> posts);

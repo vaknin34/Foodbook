@@ -44,7 +44,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.PostViewHold
     }
 
     private final LayoutInflater mInflater;
-    private List<User> users;
+    private List<Post> posts;
     private ItemClickInterface itemClickInterface;
 
     public UsersAdapter(Fragment fragment) {
@@ -60,27 +60,27 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.PostViewHold
 
     @Override
     public void onBindViewHolder(PostViewHolder holder, int position) {
-        if (users != null) {
-            final User current = users.get(position);
+        if (posts != null) {
+            final Post current = posts.get(position);
             FirebaseStorageManager.downloadImage(current.getMail() + "profile" , holder.profilPhoto);
-            holder.tv_user_name.setText(current.getName());
+            holder.tv_user_name.setText(current.getWriter());
         }
     }
 
-    public void setUsers(List<User> s){
-        users = s;
+    public void setPosts(List<Post> s){
+        posts = s;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        if (users != null)
-            return users.size();
+        if (posts != null)
+            return posts.size();
         else return 0;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<Post> getPosts() {
+        return posts;
     }
 }
 

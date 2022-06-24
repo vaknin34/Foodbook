@@ -11,15 +11,21 @@ import com.example.foodbook.fragments.HomeFragment;
 import com.example.foodbook.fragments.NewPostFragment;
 import com.example.foodbook.fragments.ProfileFragment;
 import com.example.foodbook.fragments.SearchFragment;
+import com.example.foodbook.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class NavActivity extends AppCompatActivity {
     private ActivityNavBinding binding;
+    FirebaseUser current_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityNavBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        current_user = FirebaseAuth.getInstance().getCurrentUser();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -38,7 +44,8 @@ public class NavActivity extends AppCompatActivity {
                 case R.id.profile:
                     FragmentTransaction transaction3 = fragmentManager.beginTransaction();
                     transaction3.addToBackStack(null);
-                    transaction3.replace(R.id.fragmentsFrame, ProfileFragment.newInstance(), "whatever");
+                    User user = new User(current_user.getEmail(), current_user.getDisplayName());
+                    transaction3.replace(R.id.fragmentsFrame, ProfileFragment.newInstance(user), "whatever");
                     transaction3.commit();
                     break;
                 case R.id.search:

@@ -18,28 +18,32 @@ import com.example.foodbook.activities.PostDetailsActivity;
 import com.example.foodbook.adapters.SmallPostsAdapter;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.interfaces.ItemClickInterface;
+import com.example.foodbook.models.User;
 import com.example.foodbook.viewmodels.PostViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment implements ItemClickInterface {
 
-    FirebaseUser current_user;
+    User user;
     private PostViewModel viewModel;
     private SmallPostsAdapter adapter;
     int postCount = 0;
 
     public ProfileFragment() { }
 
-    public static ProfileFragment newInstance() {
+    public static ProfileFragment newInstance(User user) {
         ProfileFragment fragment = new ProfileFragment();
+        Bundle b = new Bundle();
+        b.putSerializable("user", user);
+        fragment.setArguments(b);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        current_user = FirebaseAuth.getInstance().getCurrentUser();
+        user =(User)getArguments().getSerializable("user");
     }
 
     @Override
@@ -52,8 +56,8 @@ public class ProfileFragment extends Fragment implements ItemClickInterface {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        FirebaseStorageManager.downloadImage(current_user.getEmail() + "profile" , view.findViewById(R.id.profilePhoto));
-        ((TextView)view.findViewById(R.id.name)).setText(current_user.getDisplayName());
+        FirebaseStorageManager.downloadImage(user.getMail() + "profile" , view.findViewById(R.id.profilePhoto));
+        ((TextView)view.findViewById(R.id.name)).setText(user.getName());
 
         viewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
@@ -66,7 +70,7 @@ public class ProfileFragment extends Fragment implements ItemClickInterface {
     public void onResume() {
         super.onResume();
 
-        viewModel.getByMail(current_user.getEmail()).observe(getViewLifecycleOwner(), posts -> {
+        viewModel.getByMail(user.getMail()).observe(getViewLifecycleOwner(), posts -> {
             postCount = posts.size();
             ((TextView)getView().findViewById(R.id.postNum)).setText(postCount + " Posts");
             adapter.setPosts(posts);
