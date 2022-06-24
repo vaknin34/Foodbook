@@ -18,7 +18,7 @@ public class PostsRepository {
     private PostFirebaseDB post_fire_db;
     private PostListData postListData;
     private PostListData postListDataFilterEmail;
-    private PostListData postListDataFilterWriterAndDishName;
+    private PostListData postListDataFilterWriterDishName;
     private static PostsRepository instance = new PostsRepository();
 
     private PostsRepository() {
@@ -26,7 +26,7 @@ public class PostsRepository {
         this.post_dao = db.postDao();
         this.postListData = new PostListData();
         this.postListDataFilterEmail = new PostListData();
-        this.postListDataFilterWriterAndDishName = new PostListData();
+        this.postListDataFilterWriterDishName = new PostListData();
         this.post_fire_db = new PostFirebaseDB(post_dao, postListData);
     }
     public static PostsRepository getInstance(){
@@ -44,11 +44,14 @@ public class PostsRepository {
         return postListDataFilterEmail;
     }
 
-    public LiveData<List<Post>> getByWriterNameAndDishName(String writer, String dish_name) {
+    public LiveData<List<Post>> getByWriterNameDishName(String writer, String dish_name) {
         new Thread(()->{
-            postListDataFilterWriterAndDishName.postValue(post_dao.findByWriterNameAndDishName(writer, dish_name));
+            if (writer.isEmpty() || dish_name.isEmpty())
+                postListDataFilterWriterDishName.postValue(post_dao.findByWriterNameOrDishName(writer, dish_name));
+            else
+                postListDataFilterWriterDishName.postValue(post_dao.findByWriterNameAndDishName(writer, dish_name));
         }).start();
-        return postListDataFilterWriterAndDishName;
+        return postListDataFilterWriterDishName;
     }
 
     public void add(Post post) {

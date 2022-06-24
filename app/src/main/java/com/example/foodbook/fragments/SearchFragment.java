@@ -20,6 +20,8 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
 
     private PostViewModel viewModel;
     private SmallPostsAdapter adapter;
+    String writer_name;
+    String dish_name;
 
     public SearchFragment() {
     }
@@ -45,8 +47,8 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
         super.onViewCreated(view, savedInstanceState);
 
         view.findViewById(R.id.search_btn).setOnClickListener(view1 -> {
-            String writer_name = ((TextInputEditText)view.findViewById(R.id.search_writer)).getText().toString();
-            String dish_name = ((TextInputEditText)view.findViewById(R.id.search_dish_name)).getText().toString();
+            writer_name = ((TextInputEditText)view.findViewById(R.id.search_writer)).getText().toString();
+            dish_name = ((TextInputEditText)view.findViewById(R.id.search_dish_name)).getText().toString();
 
             viewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
@@ -54,10 +56,21 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
             ((RecyclerView)view.findViewById(R.id.rv_serach_results)).setAdapter(adapter);
             ((RecyclerView)view.findViewById(R.id.rv_serach_results)).setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-            viewModel.getByWriterNameAndDishName(writer_name, dish_name).observe(getViewLifecycleOwner(), posts -> {
+            viewModel.getByWriterNameDishName(writer_name, dish_name).observe(getViewLifecycleOwner(), posts -> {
                 adapter.setPosts(posts);
             });
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (adapter != null) {
+            viewModel.getByWriterNameDishName(writer_name, dish_name).observe(getViewLifecycleOwner(), posts -> {
+                adapter.setPosts(posts);
+            });
+        }
 
     }
 
