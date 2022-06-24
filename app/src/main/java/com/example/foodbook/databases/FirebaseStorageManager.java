@@ -17,6 +17,15 @@ public class FirebaseStorageManager {
         dishRef.putBytes(image);
     }
 
+    public static void replaceImagePath(String new_image_path, String old_image_path){
+        StorageReference dishRef = storageRef.child(old_image_path);
+        dishRef.getBytes(1000000000).addOnSuccessListener(bytes -> {
+            StorageReference newDishRef = storageRef.child(new_image_path);
+            newDishRef.putBytes(bytes);
+            dishRef.delete();
+        });
+    }
+
     public static void downloadImage(String path, ImageView imageView){
         StorageReference dishRef = storageRef.child(path);
         dishRef.getBytes(1000000000).addOnSuccessListener(bytes -> {

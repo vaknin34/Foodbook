@@ -62,6 +62,7 @@ public class PostDetailsActivity extends AppCompatActivity {
 
                 binding.saveBtn.setOnClickListener(view1 -> {
                     GetNonEditState();
+                    FirebaseStorageManager.replaceImagePath(current_user.getEmail() + binding.etDishName.getEditText().getText().toString(), current_user.getEmail() + post.getDish_name());
                     post.setDish_name(binding.etDishName.getEditText().getText().toString());
                     post.setIngredients(binding.etIngredients.getEditText().getText().toString());
                     post.setRecipe(binding.etRecipe.getEditText().getText().toString());
