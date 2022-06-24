@@ -8,8 +8,6 @@ import com.example.foodbook.models.Like;
 import com.example.foodbook.models.LikeStatus;
 import com.example.foodbook.models.Post;
 import com.example.foodbook.repositories.PostsRepository;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,9 +50,7 @@ public class PostFirebaseDB {
         });
     }
     public void AddPost(Post post){
-
         myRef.child(String.valueOf(post.getId())).setValue(post);
-
     }
 
     public void delete(Post post) {
