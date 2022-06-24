@@ -36,7 +36,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.PostViewHold
                     int position = getAdapterPosition();
 
                     if(position != RecyclerView.NO_POSITION){
-                        itemClickInterface.onItemClick(position);
+                        itemClickInterface.onItemClick(position, "user");
                     }
                 }
             });

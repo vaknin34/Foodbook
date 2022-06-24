@@ -78,7 +78,7 @@ public class ProfileFragment extends Fragment implements ItemClickInterface {
     }
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClick(int position, String name) {
         Intent intent = new Intent(this.getContext(), PostDetailsActivity.class);
         intent.putExtra("postDetails", adapter.getPosts().get(position));
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

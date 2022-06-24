@@ -1,5 +1,5 @@
 package com.example.foodbook.interfaces;
 
 public interface ItemClickInterface {
-    void onItemClick(int position);
+    void onItemClick(int position, String name);
 }

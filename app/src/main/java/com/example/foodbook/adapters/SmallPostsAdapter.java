@@ -37,7 +37,7 @@ public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.Po
                     int position = getAdapterPosition();
 
                     if(position != RecyclerView.NO_POSITION){
-                        itemClickInterface.onItemClick(position);
+                        itemClickInterface.onItemClick(position, "smallPost");
                     }
                 }
             });

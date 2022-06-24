@@ -25,15 +25,13 @@ public class Post implements Serializable {
     private String ingredients;
     @ColumnInfo(name = "the recipe of creating the dish")
     private String recipe;
-    @ColumnInfo(name = "path to the photo of the dish")
-    private String image_firebase_path;
     @ColumnInfo(name = "number of likes on the post")
     private int likes;
 
 
     public Post() { }
 
-    public Post(String dish_name, String writer, String mail, String date, String ingredients, String recipe, String image_firebase_path, int likes) {
+    public Post(String dish_name, String writer, String mail, String date, String ingredients, String recipe, int likes) {
         this.id = java.util.UUID.randomUUID().toString().replace("-","");
         this.dish_name = dish_name;
         this.writer = writer;
@@ -41,7 +39,6 @@ public class Post implements Serializable {
         this.date = date;
         this.ingredients = ingredients;
         this.recipe = recipe;
-        this.image_firebase_path = image_firebase_path;
         this.likes = likes;
     }
 
@@ -99,14 +96,6 @@ public class Post implements Serializable {
 
     public void setRecipe(String recipe) {
         this.recipe = recipe;
-    }
-
-    public String getImage_firebase_path() {
-        return image_firebase_path;
-    }
-
-    public void setImage_firebase_path(String image_firebase_path) {
-        this.image_firebase_path = image_firebase_path;
     }
 
     public int getLikes() {

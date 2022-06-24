@@ -53,7 +53,7 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
                     int position = getAdapterPosition();
 
                     if(position != RecyclerView.NO_POSITION){
-                        itemClickInterface.onItemClick(position);
+                        itemClickInterface.onItemClick(position, "post");
                     }
                 }
             });

@@ -102,12 +102,20 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
     }
 
     @Override
-    public void onItemClick(int position) {
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.addToBackStack(null);
-        User user = new User(usersAdapter.getPosts().get(position).getMail(), usersAdapter.getPosts().get(position).getWriter());
-        transaction.replace(R.id.fragmentsFrame, ProfileFragment.newInstance(user), "whatever");
-        transaction.commit();
+    public void onItemClick(int position, String name) {
+        if (name.equals("user")) {
+            FragmentManager fragmentManager = getParentFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.addToBackStack(null);
+            User user = new User(usersAdapter.getPosts().get(position).getMail(), usersAdapter.getPosts().get(position).getWriter());
+            transaction.replace(R.id.fragmentsFrame, ProfileFragment.newInstance(user), "whatever");
+            transaction.commit();
+        }
+        else {
+            Intent intent = new Intent(this.getContext(), PostDetailsActivity.class);
+            intent.putExtra("postDetails", postsAdapter.getPosts().get(position));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        }
     }
 }

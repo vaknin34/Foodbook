@@ -95,7 +95,7 @@ public class NewPostFragment extends Fragment {
 
             else{
                 String firebase_image_path = current_user.getEmail() + dish_name;
-                Post post = new Post(dish_name, current_user.getDisplayName(), current_user.getEmail(), format.format(new Date()), ingredients, recipe, firebase_image_path, 0);
+                Post post = new Post(dish_name, current_user.getDisplayName(), current_user.getEmail(), format.format(new Date()), ingredients, recipe, 0);
                 FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
                 viewModel.add(post);
                 Toast.makeText(getContext(), "Post uploaded successfully", Toast.LENGTH_SHORT).show();
