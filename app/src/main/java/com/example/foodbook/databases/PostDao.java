@@ -18,7 +18,7 @@ public interface PostDao {
     @Query("SELECT * FROM post WHERE `Writer mail` LIKE :mail")
     List<Post> findByMail(String mail);
 
-    @Query("SELECT * FROM post WHERE `Writer name` LIKE :writer AND `dish name` LIKE :dish_name" )
+    @Query("SELECT * FROM post WHERE `Writer name` LIKE :writer AND `dish name` LIKE '%' || :dish_name || '%'" )
     List<Post> findByWriterNameAndDishName(String writer, String dish_name);
 
     @Insert

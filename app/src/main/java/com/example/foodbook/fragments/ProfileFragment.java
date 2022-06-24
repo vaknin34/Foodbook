@@ -60,13 +60,17 @@ public class ProfileFragment extends Fragment implements ItemClickInterface {
         adapter = new SmallPostsAdapter(this);
         ((RecyclerView)view.findViewById(R.id.smallPostsRv)).setAdapter(adapter);
         ((RecyclerView)view.findViewById(R.id.smallPostsRv)).setLayoutManager(new LinearLayoutManager(this.getContext()));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         viewModel.getByMail(current_user.getEmail()).observe(getViewLifecycleOwner(), posts -> {
             postCount = posts.size();
-            ((TextView)view.findViewById(R.id.postNum)).setText(postCount + " Posts");
+            ((TextView)getView().findViewById(R.id.postNum)).setText(postCount + " Posts");
             adapter.setPosts(posts);
         });
-
     }
 
     @Override
