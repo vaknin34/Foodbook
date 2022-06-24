@@ -6,6 +6,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.example.foodbook.interfaces.ItemClickInterface;
 import com.example.foodbook.viewmodels.PostViewModel;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends Fragment implements ItemClickInterface {
 
@@ -35,7 +37,6 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
     private float mAccel;
     private float mAccelCurrent;
     private float mAccelLast;
-
 
 
     public HomeFragment() {
@@ -55,7 +56,6 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
         mAccel = 10f;
         mAccelCurrent = SensorManager.GRAVITY_EARTH;
         mAccelLast = SensorManager.GRAVITY_EARTH;
-
     }
 
     @Override
@@ -89,12 +89,28 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
 
         viewModel.get().observe(getViewLifecycleOwner(), posts -> {
             adapter.setPosts(posts);
-            ((SwipeRefreshLayout)view.findViewById(R.id.swipeRefresh)).setRefreshing(false);
+            AsyncTask task = new AsyncTask() {
+                @Override
+                protected Void doInBackground(Object[] objects) {
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                }
+
+                @Override
+                protected void onPostExecute(Object o) {
+                    super.onPostExecute(o);
+                    ((SwipeRefreshLayout)view.findViewById(R.id.swipeRefresh)).setRefreshing(false);
+                }
+            };
+            task.execute();
         });
         ((SwipeRefreshLayout)view.findViewById(R.id.swipeRefresh)).setOnRefreshListener(() -> {
             viewModel.reload();
         });
-        
     }
 
     @Override
@@ -104,7 +120,6 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
-
 
     private final SensorEventListener mSensorListener = new SensorEventListener() {
         @Override
@@ -117,8 +132,10 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
             float delta = mAccelCurrent - mAccelLast;
             mAccel = mAccel * 0.9f + delta;
             if (mAccel > 12) {
-                Toast.makeText(MyApplication.context, "Shake event detected", Toast.LENGTH_SHORT).show();
-                ((SwipeRefreshLayout)getView().findViewById(R.id.swipeRefresh)).setRefreshing(true);
+                ((SwipeRefreshLayout)getView().findViewById(R.id.swipeRefresh)).post(()->{
+                    ((SwipeRefreshLayout)getView().findViewById(R.id.swipeRefresh)).setRefreshing(true);
+                });
+                Toast.makeText(MyApplication.context, "Shake reload detected", Toast.LENGTH_SHORT).show();
                 viewModel.reload();
             }
         }
