@@ -40,7 +40,7 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
 
         private PostViewHolder(View itemView, ItemClickInterface itemClickInterface) {
             super(itemView);
-            tvWriter = itemView.findViewById(R.id.tvDish);
+            tvWriter = itemView.findViewById(R.id.tv_user_name);
             tvDishName = itemView.findViewById(R.id.tvDishName);
             tvDate = itemView.findViewById(R.id.tvDate);
             tvLikes = itemView.findViewById(R.id.tvLikes);

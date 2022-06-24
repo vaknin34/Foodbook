@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import com.example.foodbook.R;
 import com.example.foodbook.activities.PostDetailsActivity;
 import com.example.foodbook.adapters.SmallPostsAdapter;
+import com.example.foodbook.adapters.UsersAdapter;
 import com.example.foodbook.interfaces.ItemClickInterface;
 import com.example.foodbook.viewmodels.PostViewModel;
 import com.google.android.material.textfield.TextInputEditText;
@@ -19,9 +22,10 @@ import com.google.android.material.textfield.TextInputEditText;
 public class SearchFragment extends Fragment implements ItemClickInterface {
 
     private PostViewModel viewModel;
-    private SmallPostsAdapter adapter;
-    String writer_name;
-    String dish_name;
+    private SmallPostsAdapter postsAdapter;
+    private UsersAdapter usersAdapter;
+
+    String query;
 
     public SearchFragment() {
     }
@@ -47,18 +51,18 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
         super.onViewCreated(view, savedInstanceState);
 
         view.findViewById(R.id.search_btn).setOnClickListener(view1 -> {
-            writer_name = ((TextInputEditText)view.findViewById(R.id.search_writer)).getText().toString();
-            dish_name = ((TextInputEditText)view.findViewById(R.id.search_dish_name)).getText().toString();
+            query = ((TextInputEditText)view.findViewById(R.id.search)).getText().toString();
 
             viewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
-            adapter = new SmallPostsAdapter(this);
-            ((RecyclerView)view.findViewById(R.id.rv_serach_results)).setAdapter(adapter);
-            ((RecyclerView)view.findViewById(R.id.rv_serach_results)).setLayoutManager(new LinearLayoutManager(this.getContext()));
+            usersAdapter = new UsersAdapter(this);
+            ((RecyclerView)view.findViewById(R.id.rv_user_results)).setAdapter(usersAdapter);
+            ((RecyclerView)view.findViewById(R.id.rv_user_results)).setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-            viewModel.getByWriterNameDishName(writer_name, dish_name).observe(getViewLifecycleOwner(), posts -> {
-                adapter.setPosts(posts);
-            });
+            postsAdapter = new SmallPostsAdapter(this);
+            ((RecyclerView)view.findViewById(R.id.rv_post_results)).setAdapter(usersAdapter);
+            ((RecyclerView)view.findViewById(R.id.rv_post_results)).setLayoutManager(new LinearLayoutManager(this.getContext()));
+
         });
     }
 
@@ -66,11 +70,13 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
     public void onResume() {
         super.onResume();
 
-        if (adapter != null) {
-            viewModel.getByWriterNameDishName(writer_name, dish_name).observe(getViewLifecycleOwner(), posts -> {
-                adapter.setPosts(posts);
-            });
-        }
+        viewModel.getUsersByUserName(query).observe(getViewLifecycleOwner(), users -> {
+            usersAdapter.setUsers(users);
+        });
+
+        viewModel.getPostsByDishName(query).observe(getViewLifecycleOwner(), posts -> {
+            postsAdapter.setPosts(posts);
+        });
 
     }
 

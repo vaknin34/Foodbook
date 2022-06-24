@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_WriterName"
+            android:id="@+id/et_search"
             android:layout_width="306dp"
             android:layout_height="57dp"
             android:layout_alignParentStart="true"
@@ -28,37 +28,10 @@
             android:textSize="40sp"
             app:lineHeight="34sp"
             app:startIconDrawable="@drawable/ic_search"
-            android:hint="@string/writer_name">
+            android:hint="@string/search_something">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/search_writer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/abeezee" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_DishName"
-            android:layout_width="306dp"
-            android:layout_height="57dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="51dp"
-            android:layout_marginLeft="48dp"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="51dp"
-            android:fontFamily="@font/abeezee"
-            android:textAlignment="center"
-            android:textSize="40sp"
-            app:lineHeight="34sp"
-            app:startIconDrawable="@drawable/ic_search"
-            android:hint="@string/dish_name2">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/search_dish_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abeezee" />
@@ -72,7 +45,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="14dp"
-            android:layout_marginBottom="26dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="257dp"
             android:backgroundTint="#3F51B5"
@@ -80,10 +53,40 @@
             android:text="Search"
             android:textSize="16sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_serach_results"
+        <TextView
+            android:id="@+id/users_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abeezee"
+            android:text="@string/users"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="34sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_user_results"
+            android:layout_width="match_parent"
+            android:layout_height="103dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/posts_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/abeezee"
+            android:text="@string/posts"
+            android:textSize="34sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_post_results"
+            android:layout_width="match_parent"
+            android:layout_height="145dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 
