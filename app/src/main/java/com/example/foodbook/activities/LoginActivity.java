@@ -6,19 +6,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.foodbook.databinding.ActivityMainBinding;
+import com.example.foodbook.databinding.ActivityLoginBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
-    private ActivityMainBinding binding;
+    private ActivityLoginBinding binding;
     private String mail, password;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
