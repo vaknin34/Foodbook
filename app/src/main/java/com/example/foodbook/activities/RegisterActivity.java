@@ -1,6 +1,7 @@
 package com.example.foodbook.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
@@ -11,6 +12,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.foodbook.R;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.databinding.ActivityRegisterBinding;
 import com.example.foodbook.models.User;

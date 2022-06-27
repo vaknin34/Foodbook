@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="408dp"
     android:layout_height="427dp"
-    android:layout_marginBottom="6dp"
-    android:background="#FFFFFF">
+    android:layout_marginBottom="6dp">
 
     <LinearLayout
         android:layout_width="408dp"
@@ -78,7 +77,6 @@
                 android:layout_height="36dp"
                 android:fontFamily="@font/abeezee"
                 android:text="name"
-                android:textColor="@color/black"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
