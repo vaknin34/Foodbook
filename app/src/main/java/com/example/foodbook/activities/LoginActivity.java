@@ -20,20 +20,16 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences loginPreference;
     String MY_PREF = "my_pref";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // initialize SharePreference
         loginPreference = getSharedPreferences(MY_PREF, Context.MODE_PRIVATE);
 
-        // this condition will do the trick.
         if(loginPreference.getString("firstTime", "notok").equals("notok")){
 
-            // add tag in SharedPreference here..
             SharedPreferences.Editor edit = loginPreference.edit();
             edit.putString("firstTime", "no");
             edit.commit();
@@ -43,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
                     .setMessage("This is where you can search for recipes and share your own")
                     .setPositiveButton("Continue", (dialogInterface, i) -> {})
                     .show();
-
         }
 
         firebaseAuth = FirebaseAuth.getInstance();
