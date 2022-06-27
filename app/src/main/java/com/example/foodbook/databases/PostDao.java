@@ -21,9 +21,6 @@ public interface PostDao {
     @Query("SELECT * FROM post WHERE `dish name` LIKE '%' || :dish_name || '%'" )
     List<Post> findByDishName(String dish_name);
 
-    @Query("SELECT * FROM post WHERE `Writer name` LIKE '%' || :user_name || '%'" )
-    List<Post> findByUserName(String user_name);
-
     @Insert
     void insertAll(List<Post> posts);
 

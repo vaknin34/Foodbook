@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.UserManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,10 @@ import com.example.foodbook.models.Post;
 import com.example.foodbook.models.User;
 import com.example.foodbook.viewmodels.PostViewModel;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class SearchFragment extends Fragment implements ItemClickInterface {
 
@@ -69,9 +75,11 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
             ((RecyclerView)view.findViewById(R.id.rv_post_results)).setAdapter(postsAdapter);
             ((RecyclerView)view.findViewById(R.id.rv_post_results)).setLayoutManager(new LinearLayoutManager(this.getContext()));
 
+            viewModel.getByUserName(query);
+
             if (usersAdapter != null) {
-                viewModel.getByUserName(query).observe(getViewLifecycleOwner(), posts -> {
-                    usersAdapter.setPosts(posts);
+                viewModel.getByUserName(query).observe(getViewLifecycleOwner(), users -> {
+                    usersAdapter.setUsers(users);
                 });
             }
 
@@ -88,8 +96,8 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
         super.onResume();
 
         if (usersAdapter != null) {
-            viewModel.getByUserName(query).observe(getViewLifecycleOwner(), posts -> {
-                usersAdapter.setPosts(posts);
+            viewModel.getByUserName(query).observe(getViewLifecycleOwner(), users -> {
+                usersAdapter.setUsers(users);
             });
         }
 
@@ -107,7 +115,7 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.addToBackStack(null);
-            User user = new User(usersAdapter.getPosts().get(position).getMail(), usersAdapter.getPosts().get(position).getWriter());
+            User user = new User(usersAdapter.getUsers().get(position).getMail(), usersAdapter.getUsers().get(position).getName());
             transaction.replace(R.id.fragmentsFrame, ProfileFragment.newInstance(user), "whatever");
             transaction.commit();
         }

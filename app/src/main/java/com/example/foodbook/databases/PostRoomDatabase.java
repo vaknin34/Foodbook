@@ -7,11 +7,13 @@ import androidx.room.RoomDatabase;
 import com.example.foodbook.MyApplication;
 import com.example.foodbook.R;
 import com.example.foodbook.models.Post;
+import com.example.foodbook.models.User;
 
-@Database(entities = {Post.class}, version = 1)
+@Database(entities = {Post.class, User.class}, version = 1)
 public abstract class PostRoomDatabase extends RoomDatabase {
     private static PostRoomDatabase instance;
     public abstract PostDao postDao();
+    public abstract UserDao userDao();
 
 
     public static PostRoomDatabase getInstance() {

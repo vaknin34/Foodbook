@@ -1,6 +1,8 @@
 package com.example.foodbook.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +13,8 @@ import android.util.Log;
 import android.widget.Toast;
 import com.example.foodbook.databases.FirebaseStorageManager;
 import com.example.foodbook.databinding.ActivityRegisterBinding;
+import com.example.foodbook.models.User;
+import com.example.foodbook.viewmodels.PostViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -24,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     Bitmap image;
     byte[] image_bytes;
     String mail, password, name;
+    PostViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
+        viewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
         binding.signinBtn1.setOnClickListener(view -> {
             Intent intent = new Intent(this, LoginActivity.class);
@@ -68,12 +74,15 @@ public class RegisterActivity extends AppCompatActivity {
                         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
                         currentUser.updateProfile(profileUpdates);
+                        User user = new User(mail, name);
+                        viewModel.addUser(user);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         String firebase_image_path = mail + "profile";
                         image.compress(Bitmap.CompressFormat.PNG, 100, stream);
                         image_bytes = stream.toByteArray();
                         if (image_bytes.length > 0) {
                             FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
+                            Toast.makeText(this, "User created successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(this, LoginActivity.class);
                             startActivity(intent);
                         }

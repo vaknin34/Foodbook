@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Foodbook</string>
     <string name="user">user</string>
-    <string name="DbName">postsv7</string>
+    <string name="DbName">postsv8</string>
     <string name="foodbook">foodbook</string>
     <string name="todo">TODO</string>
     <string name="post_a_dish">Post a dish</string>

@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import com.example.foodbook.models.Like;
 import com.example.foodbook.models.LikeStatus;
 import com.example.foodbook.models.Post;
+import com.example.foodbook.models.User;
 import com.example.foodbook.repositories.PostsRepository;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,12 +22,19 @@ public class PostFirebaseDB {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = database.getReference("Posts");
     private DatabaseReference myLikeRef = database.getReference("Likes");
+    private DatabaseReference myUserRef = database.getReference("Users");
     private PostDao post_dao;
-    private PostsRepository.PostListData postListData;
+    private UserDao user_dao;
 
-    public PostFirebaseDB(PostDao post_dao, PostsRepository.PostListData postListData) {
+    private PostsRepository.PostListData postListData;
+    private PostsRepository.UserListData userListData;
+
+    public PostFirebaseDB(PostDao post_dao, UserDao user_dao, PostsRepository.PostListData postListData, PostsRepository.UserListData userListData) {
         this.post_dao = post_dao;
+        this.user_dao = user_dao;
         this.postListData = postListData;
+        this.userListData = userListData;
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -48,9 +56,35 @@ public class PostFirebaseDB {
                 Log.d("Data", "Failed to read value.", error.toException());
             }
         });
+
+        myUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                List<User> users = new ArrayList<>();
+                for (DataSnapshot postsnap: snapshot.getChildren()) {
+                    User user = postsnap.getValue(User.class);
+                    users.add(user);
+                }
+                userListData.setValue(users);
+                new Thread(()->{
+                    user_dao.clear();
+                    user_dao.insertAll(users);
+                }).start();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("Data", "Failed to read value.", error.toException());
+            }
+        });
     }
     public void AddPost(Post post){
         myRef.child(String.valueOf(post.getId())).setValue(post);
+    }
+
+    public void AddUser(User user) {
+        String id = user.getMail().replace(".", "").replace("@", "");
+        myUserRef.child(id).setValue(user);
     }
 
     public void delete(Post post) {

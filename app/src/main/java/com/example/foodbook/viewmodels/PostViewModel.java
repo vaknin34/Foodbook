@@ -6,12 +6,14 @@ import androidx.lifecycle.ViewModel;
 import com.example.foodbook.models.Like;
 import com.example.foodbook.models.LikeStatus;
 import com.example.foodbook.models.Post;
+import com.example.foodbook.models.User;
 import com.example.foodbook.repositories.PostsRepository;
 
 import java.util.List;
 
 public class PostViewModel extends ViewModel {
     private LiveData<List<Post>> posts;
+    private LiveData<List<User>> users;
     private PostsRepository repository;
 
     public PostViewModel() {
@@ -26,9 +28,9 @@ public class PostViewModel extends ViewModel {
         return posts;
     }
 
-    public LiveData<List<Post>> getByUserName(String user_name) {
-        posts = repository.getByUserName(user_name);
-        return posts;
+    public LiveData<List<User>> getByUserName(String user_name) {
+        users = repository.getByUserName(user_name);
+        return users;
     }
 
     public LiveData<List<Post>> getByDishName(String dish_name) {
@@ -37,6 +39,8 @@ public class PostViewModel extends ViewModel {
     }
 
     public void add(Post post) {repository.add(post);}
+
+    public void addUser(User user) {repository.addUser(user);}
 
     public void delete(Post post) {repository.delete(post);}
 

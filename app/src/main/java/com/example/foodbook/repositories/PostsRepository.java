@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.foodbook.databases.PostDao;
 import com.example.foodbook.databases.PostFirebaseDB;
 import com.example.foodbook.databases.PostRoomDatabase;
+import com.example.foodbook.databases.UserDao;
 import com.example.foodbook.models.Like;
 import com.example.foodbook.models.LikeStatus;
 import com.example.foodbook.models.Post;
@@ -16,21 +17,23 @@ import java.util.List;
 
 public class PostsRepository {
     private PostDao post_dao;
+    private UserDao user_dao;
     private PostFirebaseDB post_fire_db;
     private PostListData postListData;
     private PostListData postListDataFilterEmail;
     private PostListData postListDataFilterDishName;
-    private PostListData postListDataFilterUserName;
+    private UserListData userListData;
     private static PostsRepository instance = new PostsRepository();
 
     private PostsRepository() {
         PostRoomDatabase db = PostRoomDatabase.getInstance();
         this.post_dao = db.postDao();
+        this.user_dao = db.userDao();
         this.postListData = new PostListData();
         this.postListDataFilterEmail = new PostListData();
         this.postListDataFilterDishName = new PostListData();
-        this.postListDataFilterUserName = new PostListData();
-        this.post_fire_db = new PostFirebaseDB(post_dao, postListData);
+        this.userListData = new UserListData();
+        this.post_fire_db = new PostFirebaseDB(post_dao, user_dao, postListData, userListData);
     }
     public static PostsRepository getInstance(){
         return instance;
@@ -54,15 +57,19 @@ public class PostsRepository {
         return postListDataFilterDishName;
     }
 
-    public LiveData<List<Post>> getByUserName(String user_name) {
+    public LiveData<List<User>> getByUserName(String user_name) {
         new Thread(()->{
-            postListDataFilterUserName.postValue(post_dao.findByUserName(user_name));
+            userListData.postValue(user_dao.findByUserName(user_name));
         }).start();
-        return postListDataFilterUserName;
+        return userListData;
     }
 
     public void add(Post post) {
         post_fire_db.AddPost(post);
+    }
+
+    public void addUser(User user) {
+        post_fire_db.AddUser(user);
     }
 
     public void delete(Post post) {
@@ -101,6 +108,18 @@ public class PostsRepository {
             new Thread(()->{
                postListData.postValue(post_dao.getAll());
             }).start();
+        }
+    }
+
+    public class UserListData extends MutableLiveData<List<User>> {
+        public UserListData(){
+            super();
+            setValue(new ArrayList<>());
+        }
+
+        @Override
+        protected void onActive() {
+            super.onActive();
         }
     }
 }
