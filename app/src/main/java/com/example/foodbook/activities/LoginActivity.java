@@ -31,15 +31,16 @@ public class LoginActivity extends AppCompatActivity {
         loginPreference = getSharedPreferences(MY_PREF, Context.MODE_PRIVATE);
 
         // this condition will do the trick.
-        if(loginPreference.getString("tag", "notok").equals("notok")){
+        if(loginPreference.getString("firstTime", "notok").equals("notok")){
 
             // add tag in SharedPreference here..
             SharedPreferences.Editor edit = loginPreference.edit();
-            edit.putString("tag", "ok");
+            edit.putString("firstTime", "no");
             edit.commit();
 
             new MaterialAlertDialogBuilder(this)
-                    .setMessage("Welcome To FoodBook!")
+                    .setTitle("Welcome To FoodBook!")
+                    .setMessage("This is where you can search for recipes and share your own")
                     .setPositiveButton("Continue", (dialogInterface, i) -> {})
                     .show();
 
