@@ -184,14 +184,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="236dp"
-                    android:backgroundTint="#000000"
+                    android:backgroundTint="#4CAF50"
                     android:fontFamily="@font/abeezee"
                     android:text="@string/edit"
                     android:textSize="12sp"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:visibility="invisible"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <Button
