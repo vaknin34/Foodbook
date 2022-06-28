@@ -27,8 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
         loginPreference = getSharedPreferences(MY_PREF, Context.MODE_PRIVATE);
 
         if(loginPreference.getString("firstTime", "notok").equals("notok")){

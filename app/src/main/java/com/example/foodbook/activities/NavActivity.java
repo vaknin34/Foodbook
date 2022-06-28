@@ -1,17 +1,31 @@
 package com.example.foodbook.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Switch;
+
 import com.example.foodbook.R;
 import com.example.foodbook.databinding.ActivityNavBinding;
+import com.example.foodbook.dialogs.SettingsDialog;
 import com.example.foodbook.fragments.HomeFragment;
 import com.example.foodbook.fragments.NewPostFragment;
 import com.example.foodbook.fragments.ProfileFragment;
 import com.example.foodbook.fragments.SearchFragment;
 import com.example.foodbook.models.User;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -26,6 +40,11 @@ public class NavActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         current_user = FirebaseAuth.getInstance().getCurrentUser();
+
+        binding.settingsButton.setOnClickListener(view -> {
+            SettingsDialog settingsDialog = new SettingsDialog();
+            settingsDialog.show(getSupportFragmentManager(), "");
+        });
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

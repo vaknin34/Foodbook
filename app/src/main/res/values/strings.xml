@@ -3,7 +3,6 @@
     <string name="user">user</string>
     <string name="DbName">postsv8</string>
     <string name="foodbook">foodbook</string>
-    <string name="todo">TODO</string>
     <string name="post_a_dish">Post a dish</string>
     <string name="post_new_recipe">New Recipe</string>
     <string name="post_it">Post it</string>
@@ -18,34 +17,29 @@
     <string name="don_t_have_account_yet">Don\'t have account yet?</string>
     <string name="click_here">click here</string>
     <string name="mail">Mail</string>
-    <string name="sign_in1">Sign in</string>
+    <string name="sign_in1">Sign In</string>
     <string name="register">Register</string>
     <string name="email">Email</string>
     <string name="already_have_account">Already have account?</string>
     <string name="profile_image">Profile Image</string>
-    <string name="register1">Register</string>
     <string name="name">Name</string>
     <string name="like">like</string>
     <string name="writer">Writer</string>
     <string name="date">Date</string>
-    <string name="recipe1">Recipe</string>
-    <string name="ingredients1">Ingredients</string>
     <string name="edit">edit</string>
     <string name="delete">delete</string>
     <string name="save">save</string>
-    <string name="dish_name1">Dish Name</string>
     <string name="cancel">cancel</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="new_post">New Post</string>
     <string name="log_out">Log Out</string>
     <string name="search">Search</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="post_info">Post Info</string>
     <string name="writer_name">Writer Name</string>
-    <string name="dish_name2">Dish Name</string>
     <string name="users">Users</string>
     <string name="posts">Posts</string>
     <string name="search_something">Search Something...</string>
+    <string name="settings">Settings</string>
+    <string name="apply">Apply</string>
 </resources>

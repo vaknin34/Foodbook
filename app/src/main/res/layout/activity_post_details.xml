@@ -80,7 +80,7 @@
                 android:layout_width="352dp"
                 android:layout_height="71dp"
                 android:layout_marginLeft="15dp"
-                android:hint="@string/dish_name1">
+                android:hint="@string/dish_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -128,7 +128,7 @@
                 android:layout_width="352dp"
                 android:layout_height="200dp"
                 android:layout_marginLeft="15dp"
-                android:hint="@string/ingredients1">
+                android:hint="@string/ingredients">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -146,7 +146,7 @@
                 android:layout_width="352dp"
                 android:layout_height="200dp"
                 android:layout_marginLeft="15dp"
-                android:hint="@string/recipe1">
+                android:hint="@string/recipe">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -199,7 +199,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="236dp"
-                    android:backgroundTint="#FFFFFF"
+                    android:backgroundTint="#878787"
                     android:fontFamily="@font/abeezee"
                     android:text="@string/cancel"
                     android:textColor="#000000"
