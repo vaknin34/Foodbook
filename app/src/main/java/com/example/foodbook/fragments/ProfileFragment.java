@@ -72,7 +72,7 @@ public class ProfileFragment extends Fragment implements ItemClickInterface {
 
         viewModel.getByMail(user.getMail()).observe(getViewLifecycleOwner(), posts -> {
             postCount = posts.size();
-            ((TextView)getView().findViewById(R.id.postNum)).setText(postCount + " Posts");
+            ((TextView)getView().findViewById(R.id.postNum)).setText(postCount + " " + getString(R.string.posts));
             adapter.setPosts(posts);
         });
     }

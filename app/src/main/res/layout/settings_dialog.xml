@@ -25,7 +25,39 @@
             android:layout_height="48dp"
             android:layout_marginLeft="20dp"
             android:fontFamily="@font/abeezee"
-            android:text="Dark Mode"/>
+            android:text="@string/dark_mode"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/abeezee"
+            android:text="@string/language"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="16sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="109dp"
+            android:layout_marginLeft="40dp">
+
+            <RadioButton
+                android:id="@+id/englishRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abeezee"
+                android:text="@string/english" />
+
+            <RadioButton
+                android:id="@+id/spanishRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abeezee"
+                android:text="@string/spanish" />
+        </RadioGroup>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -37,12 +69,11 @@
                 android:id="@+id/apply_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="80dp"
+                android:layout_marginEnd="48dp"
                 android:backgroundTint="#3F51B5"
                 android:fontFamily="@font/abeezee"
                 android:text="@string/apply"
                 android:textSize="12sp"
-                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,7 +88,6 @@
                 android:fontFamily="@font/abeezee"
                 android:text="@string/cancel"
                 android:textSize="12sp"
-                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

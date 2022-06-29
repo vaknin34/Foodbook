@@ -61,7 +61,7 @@
                 android:fontFamily="@font/abeezee"
                 android:text="@string/post_info"
                 android:textAlignment="center"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 app:lineHeight="34sp" />
 
             <ImageView
