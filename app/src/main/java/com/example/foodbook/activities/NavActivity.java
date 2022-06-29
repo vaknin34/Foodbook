@@ -41,12 +41,28 @@ public class NavActivity extends AppCompatActivity {
 
         current_user = FirebaseAuth.getInstance().getCurrentUser();
 
-        binding.settingsButton.setOnClickListener(view -> {
-            SettingsDialog settingsDialog = new SettingsDialog();
-            settingsDialog.show(getSupportFragmentManager(), "");
-        });
-
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+        int currentFragmentId = (getIntent().getIntExtra("currentFragment", -1));
+        if (currentFragmentId != -1 && currentFragmentId != 2131362070) {
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.addToBackStack(null);
+
+            switch (currentFragmentId) {
+                case 2131362231:
+                    User user = new User(current_user.getEmail(), current_user.getDisplayName());
+                    transaction.add(R.id.fragmentsFrame, ProfileFragment.newInstance(user), "whatever");
+                    break;
+                case 2131362264:
+                    transaction.add(R.id.fragmentsFrame, SearchFragment.newInstance(), "whatever");
+                    break;
+                case 2131362194:
+                    transaction.add(R.id.fragmentsFrame, NewPostFragment.newInstance(), "whatever");
+                    break;
+            }
+            transaction.commit();
+            binding.bottomNavigation.setSelectedItemId(currentFragmentId);
+        }
 
         if (binding.bottomNavigation.getSelectedItemId() == R.id.home) {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -54,6 +70,12 @@ public class NavActivity extends AppCompatActivity {
             transaction.add(R.id.fragmentsFrame, HomeFragment.newInstance(), "whatever");
             transaction.commit();
         }
+
+        binding.settingsButton.setOnClickListener(view -> {
+            int current_fragment = binding.bottomNavigation.getSelectedItemId();
+            SettingsDialog settingsDialog = new SettingsDialog(current_fragment);
+            settingsDialog.show(getSupportFragmentManager(), "");
+        });
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {

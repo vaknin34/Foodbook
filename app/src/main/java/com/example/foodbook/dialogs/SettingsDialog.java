@@ -26,6 +26,11 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 
 public class SettingsDialog extends DialogFragment {
     SwitchMaterial s;
+     int current_fragment;
+
+    public SettingsDialog(int current_fragment) {
+        this.current_fragment = current_fragment;
+    }
 
     @Nullable
     @Override
@@ -69,6 +74,7 @@ public class SettingsDialog extends DialogFragment {
             else
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             Intent intent = new Intent(getContext(), NavActivity.class);
+            intent.putExtra("currentFragment", current_fragment);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
             dismiss();
