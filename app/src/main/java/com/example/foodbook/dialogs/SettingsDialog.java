@@ -1,6 +1,7 @@
 package com.example.foodbook.dialogs;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,12 +15,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.foodbook.R;
+import com.example.foodbook.activities.NavActivity;
+import com.example.foodbook.fragments.HomeFragment;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 
 public class SettingsDialog extends DialogFragment {
-    Switch s;
+    SwitchMaterial s;
 
     @Nullable
     @Override
@@ -62,6 +68,9 @@ public class SettingsDialog extends DialogFragment {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             else
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            Intent intent = new Intent(getContext(), NavActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
             dismiss();
         });
 

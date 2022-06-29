@@ -47,10 +47,13 @@ public class NavActivity extends AppCompatActivity {
         });
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.addToBackStack(null);
-        transaction.add(R.id.fragmentsFrame, HomeFragment.newInstance(), "whatever");
-        transaction.commit();
+
+        if (binding.bottomNavigation.getSelectedItemId() == R.id.home) {
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.addToBackStack(null);
+            transaction.add(R.id.fragmentsFrame, HomeFragment.newInstance(), "whatever");
+            transaction.commit();
+        }
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
