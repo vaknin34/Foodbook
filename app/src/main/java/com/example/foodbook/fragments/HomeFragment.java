@@ -2,6 +2,7 @@ package com.example.foodbook.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -25,6 +27,10 @@ import com.example.foodbook.activities.PostDetailsActivity;
 import com.example.foodbook.adapters.PostsListAdapter;
 import com.example.foodbook.interfaces.ItemClickInterface;
 import com.example.foodbook.viewmodels.PostViewModel;
+import com.example.foodbook.models.Post;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -115,10 +121,22 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
 
     @Override
     public void onItemClick(int position, String name) {
-        Intent intent = new Intent(this.getContext(), PostDetailsActivity.class);
-        intent.putExtra("postDetails", adapter.getPosts().get(position));
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
+        Configuration config = getResources().getConfiguration();
+        if (config.screenWidthDp >= 600) {
+            Post post = adapter.getPosts().get(position);
+            ((TextInputLayout) getView().findViewById(R.id.etIngredients)).setVisibility(View.VISIBLE);
+            ((TextInputLayout) getView().findViewById(R.id.etRecipe)).setVisibility(View.VISIBLE);
+            ((TextView) getView().findViewById(R.id.dishNametitle)).setVisibility(View.VISIBLE);
+            ((TextView) getView().findViewById(R.id.dishNametitle)).setText(post.getDish_name());
+            ((TextInputLayout) getView().findViewById(R.id.etIngredients)).getEditText().setText(post.getIngredients());
+            ((TextInputLayout) getView().findViewById(R.id.etRecipe)).getEditText().setText(post.getRecipe());
+        }
+        else {
+            Intent intent = new Intent(this.getContext(), PostDetailsActivity.class);
+            intent.putExtra("postDetails", adapter.getPosts().get(position));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        }
     }
 
     private final SensorEventListener mSensorListener = new SensorEventListener() {
