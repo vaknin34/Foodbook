@@ -18,9 +18,10 @@ public class FirebaseStorageManager {
     public static void uploadImage(String image_path, byte[] image){
         StorageReference dishRef = storageRef.child(image_path);
         dishRef.getBytes(1000000000).addOnSuccessListener(bytes -> {
-            dishRef.delete();
-            StorageReference newDishRef = storageRef.child(image_path);
-            newDishRef.putBytes(image);
+            dishRef.delete().addOnSuccessListener(unused -> {
+                StorageReference newDishRef = storageRef.child(image_path);
+                newDishRef.putBytes(image);
+            });
         }).addOnFailureListener(e -> {
             dishRef.putBytes(image);
         });
