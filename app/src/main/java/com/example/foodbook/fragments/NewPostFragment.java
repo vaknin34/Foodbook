@@ -102,7 +102,6 @@ public class NewPostFragment extends Fragment {
                 ((TextInputLayout)view.findViewById(R.id.etDishName)).getEditText().setText("");
                 ((TextInputLayout)view.findViewById(R.id.etRecipe)).getEditText().setText("");
                 ((TextInputLayout)view.findViewById(R.id.etIngredients)).getEditText().setText("");
-                ((TextInputLayout)view.findViewById(R.id.etIngredients)).getEditText().clearFocus();
             }
         });
     }

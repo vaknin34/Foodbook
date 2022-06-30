@@ -51,15 +51,15 @@ public class NavActivity extends AppCompatActivity {
             switch (currentFragmentId) {
                 case "PROFILE":
                     User user = new User(current_user.getEmail(), current_user.getDisplayName());
-                    transaction.add(R.id.fragmentsFrame, ProfileFragment.newInstance(user), "whatever");
+                    transaction.add(R.id.fragmentsFrame, ProfileFragment.newInstance(user), "PROFILE");
                     binding.bottomNavigation.setSelectedItemId(R.id.profile);
                     break;
                 case "SEARCH":
-                    transaction.add(R.id.fragmentsFrame, SearchFragment.newInstance(), "whatever");
+                    transaction.add(R.id.fragmentsFrame, SearchFragment.newInstance(), "SEARCH");
                     binding.bottomNavigation.setSelectedItemId(R.id.search);
                     break;
                 case "NEW_POST":
-                    transaction.add(R.id.fragmentsFrame, NewPostFragment.newInstance(), "whatever");
+                    transaction.add(R.id.fragmentsFrame, NewPostFragment.newInstance(), "NEW_POST");
                     binding.bottomNavigation.setSelectedItemId(R.id.new_post);
                     break;
             }
