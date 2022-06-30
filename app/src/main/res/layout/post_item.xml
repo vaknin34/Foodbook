@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="408dp"
+    android:layout_width="match_parent"
     android:layout_height="427dp"
     android:layout_marginBottom="6dp">
 
     <LinearLayout
-        android:layout_width="408dp"
+        android:layout_width="match_parent"
         android:layout_height="427dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,8 +133,8 @@
                 android:layout_marginEnd="36dp"
                 android:layout_marginBottom="21dp"
                 android:backgroundTint="#3F51B5"
-                android:src="@drawable/ic_like"
                 android:fontFamily="@font/abeezee"
+                android:src="@drawable/ic_like"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

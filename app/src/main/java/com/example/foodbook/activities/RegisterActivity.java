@@ -87,6 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
                             FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
                             Toast.makeText(this, "User created successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(this, LoginActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                             startActivity(intent);
                         }
                         else {
