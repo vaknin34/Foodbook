@@ -31,7 +31,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="51dp"
+                    android:layout_marginStart="50dp"
                     android:layout_marginLeft="54dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginEnd="50dp"
@@ -62,7 +62,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="352dp"
                     android:layout_height="71dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center"
                     android:hint="@string/dish_name">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -77,15 +77,15 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="352dp"
                     android:layout_height="88dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center"
                     android:hint="@string/ingredients">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
+                        android:fontFamily="@font/abeezee"
                         android:gravity="start|top"
-                        android:inputType="textMultiLine"
-                        android:fontFamily="@font/abeezee" />
+                        android:inputType="textMultiLine" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,16 +94,16 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="350dp"
                     android:layout_height="121dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
                     android:hint="@string/recipe">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="113dp"
+                        android:fontFamily="@font/abeezee"
                         android:gravity="start|top"
-                        android:inputType="textMultiLine"
-                        android:fontFamily="@font/abeezee" />
+                        android:inputType="textMultiLine" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,11 +129,11 @@
                         android:id="@+id/ivUploadDishPhoto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="33dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="152dp"
                         android:layout_marginBottom="21dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0"
                         app:srcCompat="@android:drawable/ic_menu_upload" />
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="14dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginBottom="26dp"
                 android:backgroundTint="#3F51B5"
                 android:fontFamily="@font/abeezee"

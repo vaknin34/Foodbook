@@ -35,7 +35,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="633dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,11 +54,13 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
                 android:layout_marginStart="51dp"
                 android:layout_marginLeft="48dp"
-                android:layout_marginTop="21dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginEnd="51dp"
                 android:fontFamily="@font/abeezee"
+                android:gravity="center"
                 android:text="@string/post_info"
                 android:textAlignment="center"
                 android:textSize="30sp"
@@ -75,11 +77,11 @@
                     android:layout_height="247dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
+                    android:clickable="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:clickable="false"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/Clicktoeditlabel"
@@ -102,14 +104,14 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="352dp"
                 android:layout_height="71dp"
-                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
                 android:hint="@string/dish_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/abeezee"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:fontFamily="@font/abeezee" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,14 +120,14 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="352dp"
                 android:layout_height="71dp"
-                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
                 android:hint="@string/writer">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/abeezee"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:fontFamily="@font/abeezee" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,14 +136,14 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="352dp"
                 android:layout_height="71dp"
-                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
                 android:hint="@string/date">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/abeezee"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:fontFamily="@font/abeezee" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -150,16 +152,16 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="352dp"
                 android:layout_height="200dp"
-                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
                 android:hint="@string/ingredients">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
+                    android:enabled="false"
                     android:fontFamily="@font/abeezee"
                     android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:enabled="false"/>
+                    android:inputType="textMultiLine" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -168,16 +170,16 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="352dp"
                 android:layout_height="200dp"
-                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
                 android:hint="@string/recipe">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
+                    android:enabled="false"
                     android:fontFamily="@font/abeezee"
                     android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:enabled="false"/>
+                    android:inputType="textMultiLine" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -196,24 +198,24 @@
                     android:fontFamily="@font/abeezee"
                     android:text="@string/delete"
                     android:textSize="12sp"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:visibility="invisible"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <Button
                     android:id="@+id/edit_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="236dp"
+                    android:layout_marginStart="80dp"
                     android:backgroundTint="#4CAF50"
                     android:fontFamily="@font/abeezee"
                     android:text="@string/edit"
                     android:textSize="12sp"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
 
@@ -221,7 +223,7 @@
                     android:id="@+id/cnl_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="236dp"
+                    android:layout_marginEnd="80dp"
                     android:backgroundTint="#878787"
                     android:fontFamily="@font/abeezee"
                     android:text="@string/cancel"
@@ -237,15 +239,15 @@
                     android:id="@+id/save_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
+                    android:layout_marginStart="80dp"
                     android:backgroundTint="#3F51B5"
                     android:fontFamily="@font/abeezee"
                     android:text="@string/save"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/edit_btn"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

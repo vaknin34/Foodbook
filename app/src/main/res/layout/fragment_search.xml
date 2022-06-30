@@ -19,16 +19,18 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
             android:layout_marginStart="51dp"
             android:layout_marginLeft="48dp"
             android:layout_marginTop="21dp"
             android:layout_marginEnd="51dp"
             android:fontFamily="@font/abeezee"
+            android:gravity="center"
+            android:hint="@string/search_something"
             android:textAlignment="center"
             android:textSize="40sp"
             app:lineHeight="34sp"
-            app:startIconDrawable="@drawable/ic_search"
-            android:hint="@string/search_something">
+            app:startIconDrawable="@drawable/ic_search">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/search_query"
