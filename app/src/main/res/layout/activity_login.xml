@@ -143,13 +143,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="39dp"
                 android:layout_marginTop="41dp"
-                android:layout_marginEnd="34dp"
                 android:layout_marginBottom="163dp"
                 android:fontFamily="@font/abeezee"
                 android:text="@string/don_t_have_account_yet"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/goto_register"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/signin_btn" />
 
@@ -157,8 +155,8 @@
                 android:id="@+id/goto_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
                 android:layout_marginTop="41dp"
-                android:layout_marginEnd="34dp"
                 android:layout_marginBottom="163dp"
                 android:clickable="true"
                 android:fontFamily="@font/abeezee"
@@ -166,7 +164,7 @@
                 android:textColor="#3F51B5"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/don_t_have_"
                 app:layout_constraintTop_toBottomOf="@+id/signin_btn" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
