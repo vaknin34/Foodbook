@@ -4,6 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -14,8 +17,15 @@ public class FirebaseStorageManager {
 
     public static void uploadImage(String image_path, byte[] image){
         StorageReference dishRef = storageRef.child(image_path);
-        dishRef.putBytes(image);
+        dishRef.getBytes(1000000000).addOnSuccessListener(bytes -> {
+            dishRef.delete();
+            StorageReference newDishRef = storageRef.child(image_path);
+            newDishRef.putBytes(image);
+        }).addOnFailureListener(e -> {
+            dishRef.putBytes(image);
+        });
     }
+
 
     public static void replaceImagePath(String new_image_path, String old_image_path){
         StorageReference dishRef = storageRef.child(old_image_path);

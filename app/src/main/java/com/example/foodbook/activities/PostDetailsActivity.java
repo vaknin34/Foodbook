@@ -3,6 +3,7 @@ package com.example.foodbook.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -87,7 +88,7 @@ public class PostDetailsActivity extends AppCompatActivity {
                     post.setRecipe(binding.etRecipe.getEditText().getText().toString());
                     viewModel.update(post);
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    String firebase_image_path = post.getMail() + "profile";
+                    String firebase_image_path = post.getMail() + post.getDish_name();
                     image.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     image_bytes = stream.toByteArray();
                     if (image_bytes.length > 0) {
@@ -100,6 +101,7 @@ public class PostDetailsActivity extends AppCompatActivity {
                     binding.etDishName.getEditText().setText(post.getDish_name());
                     binding.etIngredients.getEditText().setText(post.getIngredients());
                     binding.etRecipe.getEditText().setText(post.getRecipe());
+                    FirebaseStorageManager.downloadImage(post.getMail() + post.getDish_name(), binding.ivDishPhoto);
                 });
             });
         }
@@ -141,6 +143,7 @@ public class PostDetailsActivity extends AppCompatActivity {
                     Uri imageUri = data.getData();
                     image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
                     Toast.makeText(this, "Photo uploaded successfully", Toast.LENGTH_SHORT).show();
+                    binding.ivDishPhoto.setImageBitmap(image);
                 } else if (resultCode == Activity.RESULT_CANCELED) {
                     Log.e("Image", "Selecting picture cancelled");
                 }

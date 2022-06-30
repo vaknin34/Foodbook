@@ -35,9 +35,9 @@ import java.util.Locale;
 public class SettingsDialog extends DialogFragment {
     SwitchMaterial s;
     RadioButton english, spanish;
-     int current_fragment;
+    String current_fragment;
 
-    public SettingsDialog(int current_fragment) {
+    public SettingsDialog(String current_fragment) {
         this.current_fragment = current_fragment;
     }
 
@@ -112,8 +112,6 @@ public class SettingsDialog extends DialogFragment {
 
     private String getLocale() {
         Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return res.getConfiguration().getLocales().get(0).toString();
         }
