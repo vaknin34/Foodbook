@@ -78,11 +78,11 @@ public class NavActivity extends AppCompatActivity {
             ProfileFragment profileFragment = (ProfileFragment)getSupportFragmentManager().findFragmentByTag("PROFILE");
             SearchFragment searchFragment = (SearchFragment) getSupportFragmentManager().findFragmentByTag("SEARCH");
             String current_fragment;
-            if (homeFragment.isVisible())
+            if (homeFragment != null &&  homeFragment.isVisible())
                 current_fragment = "HOME";
-            else if (profileFragment.isVisible())
+            else if (profileFragment != null && profileFragment.isVisible())
                 current_fragment = "PROFILE";
-            else if (searchFragment.isVisible())
+            else if (searchFragment != null && searchFragment.isVisible())
                 current_fragment = "SEARCH";
             else
                 current_fragment = "NEW_POST";
