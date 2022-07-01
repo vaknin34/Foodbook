@@ -48,4 +48,6 @@
     <string name="english">Inglés</string>
     <string name="spanish">Español</string>
     <string name="click_on_dish">Haga clic en el plato</string>
+    <string name="click_to_edit">Haz click para editar</string>
+
 </resources>

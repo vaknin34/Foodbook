@@ -91,7 +91,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="200dp"
                     android:fontFamily="@font/abeezee"
-                    android:text="Click to edit"
+                    android:text="@string/click_to_edit"
                     android:textSize="16sp"
                     android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"

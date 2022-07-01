@@ -47,4 +47,5 @@
     <string name="english">English</string>
     <string name="spanish">Spanish</string>
     <string name="click_on_dish">Click on dish</string>
+    <string name="click_to_edit">Click to edit</string>
 </resources>
