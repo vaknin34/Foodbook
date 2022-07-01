@@ -36,7 +36,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="633dp"
+        android:layout_height="match_parent"
+        android:paddingTop="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -102,9 +103,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etDishName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="352dp"
+                android:layout_width="match_parent"
                 android:layout_height="71dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:hint="@string/dish_name">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -118,9 +121,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etWriter"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="352dp"
+                android:layout_width="match_parent"
                 android:layout_height="71dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:hint="@string/writer">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -134,9 +139,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etDate"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="352dp"
+                android:layout_width="match_parent"
                 android:layout_height="71dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:hint="@string/date">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -150,9 +157,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etIngredients"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="352dp"
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:hint="@string/ingredients">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -168,9 +177,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etRecipe"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="352dp"
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:hint="@string/recipe">
 
                 <com.google.android.material.textfield.TextInputEditText
