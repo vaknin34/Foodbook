@@ -46,4 +46,5 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="english">English</string>
     <string name="spanish">Spanish</string>
+    <string name="click_on_dish">Click on dish</string>
 </resources>

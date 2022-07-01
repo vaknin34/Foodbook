@@ -126,7 +126,6 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
             Post post = adapter.getPosts().get(position);
             ((TextInputLayout) getView().findViewById(R.id.etIngredients)).setVisibility(View.VISIBLE);
             ((TextInputLayout) getView().findViewById(R.id.etRecipe)).setVisibility(View.VISIBLE);
-            ((TextView) getView().findViewById(R.id.dishNametitle)).setVisibility(View.VISIBLE);
             ((TextView) getView().findViewById(R.id.dishNametitle)).setText(post.getDish_name());
             ((TextInputLayout) getView().findViewById(R.id.etIngredients)).getEditText().setText(post.getIngredients());
             ((TextInputLayout) getView().findViewById(R.id.etRecipe)).getEditText().setText(post.getRecipe());

@@ -27,8 +27,8 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/abeezee"
                 android:gravity="center"
-                android:textSize="34sp"
-                android:visibility="invisible" />
+                android:text="@string/click_on_dish"
+                android:textSize="34sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,6 +43,7 @@
                     android:layout_width="191dp"
                     android:layout_height="250dp"
                     android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:hint="@string/ingredients"
                     android:visibility="invisible">
