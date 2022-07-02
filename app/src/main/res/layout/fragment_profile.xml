@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +22,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/topPage"
                 android:layout_width="match_parent"
-                android:layout_height="131dp">
+                android:layout_height="131dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
 
                 <androidx.cardview.widget.CardView
@@ -88,9 +91,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="531dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="0dp">
+                android:layout_marginTop="150dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/smallPostsRv"
@@ -103,7 +109,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

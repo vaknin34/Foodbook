@@ -17,6 +17,10 @@ import com.example.foodbook.models.Like;
 import com.example.foodbook.models.LikeStatus;
 import com.example.foodbook.models.Post;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Observer;
 import java.util.concurrent.atomic.AtomicReference;
@@ -132,6 +136,16 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
 
     public void setPosts(List<Post> s){
         posts = s;
+        Collections.sort(posts, (p1, p2) -> {
+            try {
+                Date date1 =new SimpleDateFormat("MM-dd HH:mm").parse(p1.getDate());
+                Date date2 =new SimpleDateFormat("MM-dd HH:mm").parse(p2.getDate());
+                return date2.compareTo(date1);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return 0;
+        });
         notifyDataSetChanged();
     }
 

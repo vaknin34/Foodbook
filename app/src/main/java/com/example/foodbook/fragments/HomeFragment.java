@@ -1,5 +1,6 @@
 package com.example.foodbook.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -95,7 +96,8 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
 
         viewModel.get().observe(getViewLifecycleOwner(), posts -> {
             adapter.setPosts(posts);
-            AsyncTask task = new AsyncTask() {
+
+            @SuppressLint("StaticFieldLeak") AsyncTask task = new AsyncTask() {
                 @Override
                 protected Void doInBackground(Object[] objects) {
                     try {
@@ -124,8 +126,8 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
         Configuration config = getResources().getConfiguration();
         if (config.screenWidthDp >= 600) {
             Post post = adapter.getPosts().get(position);
-            ((TextInputLayout) getView().findViewById(R.id.etIngredients)).setVisibility(View.VISIBLE);
-            ((TextInputLayout) getView().findViewById(R.id.etRecipe)).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.etIngredients).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.etRecipe).setVisibility(View.VISIBLE);
             ((TextView) getView().findViewById(R.id.dishNametitle)).setText(post.getDish_name());
             ((TextInputLayout) getView().findViewById(R.id.etIngredients)).getEditText().setText(post.getIngredients());
             ((TextInputLayout) getView().findViewById(R.id.etRecipe)).getEditText().setText(post.getRecipe());
