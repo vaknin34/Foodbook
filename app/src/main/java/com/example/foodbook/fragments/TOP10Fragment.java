@@ -23,6 +23,11 @@ import com.example.foodbook.viewmodels.PostViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
+
 public class TOP10Fragment extends Fragment implements ItemClickInterface {
 
     User user;
@@ -64,6 +69,11 @@ public class TOP10Fragment extends Fragment implements ItemClickInterface {
         super.onResume();
 
         viewModel.getTop10().observe(getViewLifecycleOwner(), posts -> {
+            Collections.sort(posts, (p1, p2) -> {
+                    Integer like1 = p1.getLikes();
+                    Integer like2 = p2.getLikes();
+                    return like2.compareTo(like1);
+            });
             adapter.setPosts(posts);
         });
     }

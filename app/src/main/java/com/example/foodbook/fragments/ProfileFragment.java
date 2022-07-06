@@ -23,6 +23,11 @@ import com.example.foodbook.viewmodels.PostViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
+
 public class ProfileFragment extends Fragment implements ItemClickInterface {
 
     User user;
@@ -73,6 +78,16 @@ public class ProfileFragment extends Fragment implements ItemClickInterface {
         viewModel.getByMail(user.getMail()).observe(getViewLifecycleOwner(), posts -> {
             postCount = posts.size();
             ((TextView)getView().findViewById(R.id.postNum)).setText(postCount + " " + getString(R.string.posts));
+            Collections.sort(posts, (p1, p2) -> {
+                try {
+                    Date date1 =new SimpleDateFormat("MM-dd HH:mm").parse(p1.getDate());
+                    Date date2 =new SimpleDateFormat("MM-dd HH:mm").parse(p2.getDate());
+                    return date2.compareTo(date1);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return 0;
+            });
             adapter.setPosts(posts);
         });
     }

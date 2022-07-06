@@ -75,16 +75,6 @@ public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.Po
 
     public void setPosts(List<Post> s){
         posts = s;
-        Collections.sort(posts, (p1, p2) -> {
-            try {
-                Date date1 =new SimpleDateFormat("MM-dd HH:mm").parse(p1.getDate());
-                Date date2 =new SimpleDateFormat("MM-dd HH:mm").parse(p2.getDate());
-                return date2.compareTo(date1);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            return 0;
-        });
         notifyDataSetChanged();
     }
 

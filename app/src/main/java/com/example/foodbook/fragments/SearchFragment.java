@@ -27,6 +27,10 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
 
 public class SearchFragment extends Fragment implements ItemClickInterface {
 
@@ -85,6 +89,16 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
 
             if (postsAdapter != null) {
                 viewModel.getByDishName(query).observe(getViewLifecycleOwner(), posts -> {
+                    Collections.sort(posts, (p1, p2) -> {
+                        try {
+                            Date date1 =new SimpleDateFormat("MM-dd HH:mm").parse(p1.getDate());
+                            Date date2 =new SimpleDateFormat("MM-dd HH:mm").parse(p2.getDate());
+                            return date2.compareTo(date1);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        return 0;
+                    });
                     postsAdapter.setPosts(posts);
                 });
             }
@@ -103,6 +117,16 @@ public class SearchFragment extends Fragment implements ItemClickInterface {
 
         if (postsAdapter != null) {
             viewModel.getByDishName(query).observe(getViewLifecycleOwner(), posts -> {
+                Collections.sort(posts, (p1, p2) -> {
+                    try {
+                        Date date1 =new SimpleDateFormat("MM-dd HH:mm").parse(p1.getDate());
+                        Date date2 =new SimpleDateFormat("MM-dd HH:mm").parse(p2.getDate());
+                        return date2.compareTo(date1);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    return 0;
+                });
                 postsAdapter.setPosts(posts);
             });
         }

@@ -7,6 +7,7 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -49,7 +50,6 @@ public class NavActivity extends AppCompatActivity {
             transaction.addToBackStack(null);
             transaction.replace(R.id.fragmentsFrame, TOP10Fragment.newInstance(), "TOP_10");
             transaction.commit();
-            binding.bottomNavigation.findViewById(binding.bottomNavigation.getSelectedItemId()).setPressed(false);
         });
 
         String currentFragmentId = getIntent().getStringExtra("currentFragment");
