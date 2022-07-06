@@ -57,6 +57,11 @@ public class SmallPostsAdapter extends RecyclerView.Adapter<SmallPostsAdapter.Po
         itemClickInterface = (ItemClickInterface) fragment;
     }
 
+    public SmallPostsAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
+        itemClickInterface = (ItemClickInterface) context;
+    }
+
     @Override
     public PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.small_post_for_profile, parent, false);
