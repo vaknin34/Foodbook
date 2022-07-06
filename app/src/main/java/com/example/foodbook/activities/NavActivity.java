@@ -27,6 +27,7 @@ import com.example.foodbook.fragments.ProfileFragment;
 import com.example.foodbook.fragments.SearchFragment;
 import com.example.foodbook.fragments.TOP10Fragment;
 import com.example.foodbook.models.User;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -50,12 +51,12 @@ public class NavActivity extends AppCompatActivity {
             transaction.addToBackStack(null);
             transaction.replace(R.id.fragmentsFrame, TOP10Fragment.newInstance(), "TOP_10");
             transaction.commit();
+            ((BottomNavigationItemView)binding.bottomNavigation.findViewById(R.id.home)).setSelected(false);
         });
 
         String currentFragmentId = getIntent().getStringExtra("currentFragment");
         if (currentFragmentId != null && !currentFragmentId.equals("HOME")) {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.addToBackStack(null);
 
             switch (currentFragmentId) {
                 case "PROFILE":
@@ -77,7 +78,6 @@ public class NavActivity extends AppCompatActivity {
 
         if (binding.bottomNavigation.getSelectedItemId() == R.id.home) {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.addToBackStack(null);
             transaction.add(R.id.fragmentsFrame, HomeFragment.newInstance(), "HOME");
             transaction.commit();
         }
@@ -103,26 +103,22 @@ public class NavActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.home:
                     FragmentTransaction transaction1 = fragmentManager.beginTransaction();
-                    transaction1.addToBackStack(null);
                     transaction1.replace(R.id.fragmentsFrame, HomeFragment.newInstance(), "HOME");
                     transaction1.commit();
                     break;
                 case R.id.profile:
                     FragmentTransaction transaction3 = fragmentManager.beginTransaction();
-                    transaction3.addToBackStack(null);
                     User user = new User(current_user.getEmail(), current_user.getDisplayName());
                     transaction3.replace(R.id.fragmentsFrame, ProfileFragment.newInstance(user), "PROFILE");
                     transaction3.commit();
                     break;
                 case R.id.search:
                     FragmentTransaction transaction4 = fragmentManager.beginTransaction();
-                    transaction4.addToBackStack(null);
                     transaction4.replace(R.id.fragmentsFrame, SearchFragment.newInstance(), "SEARCH");
                     transaction4.commit();
                     break;
                 case R.id.new_post:
                     FragmentTransaction transaction2 = fragmentManager.beginTransaction();
-                    transaction2.addToBackStack(null);
                     transaction2.replace(R.id.fragmentsFrame, NewPostFragment.newInstance(), "NEW_POST");
                     transaction2.commit();
                     break;

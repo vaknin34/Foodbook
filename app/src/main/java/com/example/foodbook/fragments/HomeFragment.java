@@ -29,6 +29,8 @@ import com.example.foodbook.adapters.PostsListAdapter;
 import com.example.foodbook.interfaces.ItemClickInterface;
 import com.example.foodbook.viewmodels.PostViewModel;
 import com.example.foodbook.models.Post;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -162,6 +164,5 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
     };
-
 
 }
