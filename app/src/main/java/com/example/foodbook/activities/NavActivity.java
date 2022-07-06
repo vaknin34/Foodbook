@@ -24,6 +24,7 @@ import com.example.foodbook.fragments.HomeFragment;
 import com.example.foodbook.fragments.NewPostFragment;
 import com.example.foodbook.fragments.ProfileFragment;
 import com.example.foodbook.fragments.SearchFragment;
+import com.example.foodbook.fragments.TOP10Fragment;
 import com.example.foodbook.models.User;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +43,14 @@ public class NavActivity extends AppCompatActivity {
         current_user = FirebaseAuth.getInstance().getCurrentUser();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+        binding.top10Button.setOnClickListener(view -> {
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.addToBackStack(null);
+            transaction.replace(R.id.fragmentsFrame, TOP10Fragment.newInstance(), "TOP_10");
+            transaction.commit();
+            binding.bottomNavigation.findViewById(binding.bottomNavigation.getSelectedItemId()).setPressed(false);
+        });
 
         String currentFragmentId = getIntent().getStringExtra("currentFragment");
         if (currentFragmentId != null && !currentFragmentId.equals("HOME")) {

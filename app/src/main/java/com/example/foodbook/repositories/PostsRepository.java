@@ -26,6 +26,7 @@ public class PostsRepository {
     private PostFirebaseDB post_fire_db;
     private PostListData postListData;
     private PostListData postListDataFilterEmail;
+    private PostListData postListDataTop10;
     private PostListData postListDataFilterDishName;
     private UserListData userListData;
     private static PostsRepository instance = new PostsRepository();
@@ -35,6 +36,7 @@ public class PostsRepository {
         this.post_dao = db.postDao();
         this.user_dao = db.userDao();
         this.postListData = new PostListData();
+        this.postListDataTop10 = new PostListData();
         this.postListDataFilterEmail = new PostListData();
         this.postListDataFilterDishName = new PostListData();
         this.userListData = new UserListData();
@@ -53,6 +55,13 @@ public class PostsRepository {
             postListDataFilterEmail.postValue(post_dao.findByMail(mail));
         }).start();
         return postListDataFilterEmail;
+    }
+
+    public LiveData<List<Post>> getTop10() {
+        new Thread(()->{
+            postListDataTop10.postValue(post_dao.findTop10());
+        }).start();
+        return postListDataTop10;
     }
 
     public LiveData<List<Post>> getByDishName(String dish_name) {

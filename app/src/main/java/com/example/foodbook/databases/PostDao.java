@@ -18,6 +18,9 @@ public interface PostDao {
     @Query("SELECT * FROM post WHERE `Writer mail` LIKE :mail")
     List<Post> findByMail(String mail);
 
+    @Query("SELECT * FROM post ORDER BY `number of likes on the post` LIMIT 10")
+    List<Post> findTop10();
+
     @Query("SELECT * FROM post WHERE `dish name` LIKE '%' || :dish_name || '%'" )
     List<Post> findByDishName(String dish_name);
 

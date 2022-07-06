@@ -28,6 +28,11 @@ public class PostViewModel extends ViewModel {
         return posts;
     }
 
+    public LiveData<List<Post>> getTop10() {
+        posts = repository.getTop10();
+        return posts;
+    }
+
     public LiveData<List<User>> getByUserName(String user_name) {
         users = repository.getByUserName(user_name);
         return users;
