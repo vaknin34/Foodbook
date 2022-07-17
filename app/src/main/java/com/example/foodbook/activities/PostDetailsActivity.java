@@ -89,10 +89,12 @@ public class PostDetailsActivity extends AppCompatActivity {
                     viewModel.update(post);
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     String firebase_image_path = post.getMail() + post.getDish_name();
-                    image.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    image_bytes = stream.toByteArray();
-                    if (image_bytes.length > 0) {
-                        FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
+                    if (image != null) {
+                        image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        image_bytes = stream.toByteArray();
+                        if (image_bytes.length > 0) {
+                            FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
+                        }
                     }
                 });
 
