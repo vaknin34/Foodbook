@@ -81,16 +81,16 @@ public class NewPostFragment extends Fragment {
             format = new SimpleDateFormat("MM-dd HH:mm");
 
             if (dish_name.isEmpty()) {
-                Toast.makeText(getContext(), "Dish name not valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.Dish_name_not_valid, Toast.LENGTH_SHORT).show();
             }
             else if (recipe.isEmpty()) {
-                Toast.makeText(getContext(), "Recipe not valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.Recipe_not_valid, Toast.LENGTH_SHORT).show();
             }
             else if (ingredients.isEmpty()) {
-                Toast.makeText(getContext(), "Ingredients name not valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.Ingredients_not_valid, Toast.LENGTH_SHORT).show();
             }
             else if (image == null) {
-                Toast.makeText(getContext(), "Image not valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.Image_not_valid, Toast.LENGTH_SHORT).show();
             }
 
             else{
@@ -98,7 +98,7 @@ public class NewPostFragment extends Fragment {
                 Post post = new Post(dish_name, current_user.getDisplayName(), current_user.getEmail(), format.format(new Date()), ingredients, recipe, 0);
                 FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
                 viewModel.add(post);
-                Toast.makeText(getContext(), "Post uploaded successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.Post_uploaded_successfully, Toast.LENGTH_SHORT).show();
                 ((TextInputLayout)view.findViewById(R.id.etDishName)).getEditText().setText("");
                 ((TextInputLayout)view.findViewById(R.id.etRecipe)).getEditText().setText("");
                 ((TextInputLayout)view.findViewById(R.id.etIngredients)).getEditText().setText("");
@@ -114,7 +114,7 @@ public class NewPostFragment extends Fragment {
                     //data gives you the image uri. Try to convert that to bitmap
                     Uri imageUri = data.getData();
                     image = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), imageUri);
-                    Toast.makeText(getContext(), "Photo uploaded successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.Photo_uploaded_successfully, Toast.LENGTH_SHORT).show();
                 } else if (resultCode == Activity.RESULT_CANCELED) {
                     Log.e("Image", "Selecting picture cancelled");
                 }

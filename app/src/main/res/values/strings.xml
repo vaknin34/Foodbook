@@ -58,6 +58,21 @@
     <string name="search_instruction">On the search page you can search for specific users or recipes</string>
     <string name="top10_instruction">You can also see the TOP 10 recipes that have won the most likes</string>
     <string name="let_s_start">let\'s start</string>
+    <string name="enter_email">Please enter email</string>
+    <string name="enter_password">Please enter password</string>
+    <string name="incorrect">email or password are incorrect</string>
+    <string name="Email_not_valid">Email not valid</string>
+    <string name="Password_not_valid">Password not valid</string>
+    <string name="Name_not_valid">Name not valid</string>
+    <string name="Image_not_valid">Image not valid</string>
+    <string name="User_created_successfully">User created successfully</string>
+    <string name="Fail_to_save_picture">Fail to save picture</string>
+    <string name="Fail_to_create_account">Fail to create account</string>
+    <string name="Photo_uploaded_successfully">Photo uploaded successfully</string>
+    <string name="Dish_name_not_valid">Dish name not valid</string>
+    <string name="Recipe_not_valid">Recipe not valid</string>
+    <string name="Ingredients_not_valid">Ingredients not valid</string>
+    <string name="Post_uploaded_successfully">Post uploaded successfully</string>
 
 
 </resources>

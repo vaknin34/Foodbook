@@ -61,8 +61,8 @@ public class SettingsDialog extends DialogFragment {
         int nightModeFlag = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         if (nightModeFlag == Configuration.UI_MODE_NIGHT_YES)
             s.setChecked(true);
-        String tmp = getLocale();
-        if (tmp.equals("en_US"))
+        String current_lang = getLocale();
+        if (current_lang.equals("en_US"))
             english.setChecked(true);
         else
             spanish.setChecked(true);

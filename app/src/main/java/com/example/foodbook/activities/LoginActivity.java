@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.foodbook.R;
 import com.example.foodbook.databinding.ActivityLoginBinding;
 import com.example.foodbook.dialogs.InstructionDialog;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,10 +50,10 @@ public class LoginActivity extends AppCompatActivity {
             password = binding.etPassword.getEditText().getText().toString();
 
             if (mail.isEmpty()) {
-                Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.enter_email, Toast.LENGTH_SHORT).show();
             }
             else if (password.isEmpty()){
-                Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.enter_password , Toast.LENGTH_SHORT).show();
             }
             else {
                 firebaseAuth.signInWithEmailAndPassword(mail, password).addOnCompleteListener(task -> {
@@ -62,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                         });
                     }
                     else {
-                        Toast.makeText(this, "email or password are incorrect", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, R.string.incorrect, Toast.LENGTH_SHORT).show();
                     }
                 });
             }

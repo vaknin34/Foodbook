@@ -153,7 +153,7 @@ public class HomeFragment extends Fragment implements ItemClickInterface {
             float delta = mAccelCurrent - mAccelLast;
             mAccel = mAccel * 0.9f + delta;
             if (mAccel > 12) {
-                ((SwipeRefreshLayout)getView().findViewById(R.id.swipeRefresh)).post(()->{
+                getView().findViewById(R.id.swipeRefresh).post(()->{
                     ((SwipeRefreshLayout)getView().findViewById(R.id.swipeRefresh)).setRefreshing(true);
                 });
                 Toast.makeText(MyApplication.context, "Shake reload detected", Toast.LENGTH_SHORT).show();

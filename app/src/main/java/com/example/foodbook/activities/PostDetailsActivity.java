@@ -144,7 +144,7 @@ public class PostDetailsActivity extends AppCompatActivity {
                     //data gives you the image uri. Try to convert that to bitmap
                     Uri imageUri = data.getData();
                     image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                    Toast.makeText(this, "Photo uploaded successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.Photo_uploaded_successfully, Toast.LENGTH_SHORT).show();
                     binding.ivDishPhoto.setImageBitmap(image);
                 } else if (resultCode == Activity.RESULT_CANCELED) {
                     Log.e("Image", "Selecting picture cancelled");

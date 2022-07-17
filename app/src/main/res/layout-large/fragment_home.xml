@@ -61,10 +61,12 @@
                 android:textSize="34sp" />
 
             <LinearLayout
+                android:id="@+id/details_layout"
                 android:layout_width="match_parent"
                 android:layout_height="314dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:clickable="true"
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout

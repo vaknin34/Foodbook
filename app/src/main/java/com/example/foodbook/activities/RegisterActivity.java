@@ -60,16 +60,16 @@ public class RegisterActivity extends AppCompatActivity {
             password = binding.etPassword.getEditText().getText().toString();
 
             if (mail.isEmpty() || !mail.matches("^(.+)@(\\S+)$")) {
-                Toast.makeText(this, "Email not valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.Email_not_valid, Toast.LENGTH_SHORT).show();
             }
             else if (password.isEmpty() || password.length() < 6){
-                Toast.makeText(this, "Password not valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.Password_not_valid, Toast.LENGTH_SHORT).show();
             }
             else if (name.isEmpty()){
-                Toast.makeText(this, "Name not valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.Name_not_valid, Toast.LENGTH_SHORT).show();
             }
             else if (image == null){
-                Toast.makeText(this, "Image not valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.Image_not_valid, Toast.LENGTH_SHORT).show();
             }
             else {
                 firebaseAuth.createUserWithEmailAndPassword(mail, password).addOnCompleteListener(task -> {
@@ -85,17 +85,17 @@ public class RegisterActivity extends AppCompatActivity {
                         image_bytes = stream.toByteArray();
                         if (image_bytes.length > 0) {
                             FirebaseStorageManager.uploadImage(firebase_image_path, image_bytes);
-                            Toast.makeText(this, "User created successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, R.string.User_created_successfully, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(this, LoginActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                             startActivity(intent);
                         }
                         else {
-                            Toast.makeText(this, "Fail to save picture", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, R.string.Fail_to_save_picture, Toast.LENGTH_SHORT).show();
                         }
                     }
                     else {
-                        Toast.makeText(this, "Fail to create account", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, R.string.Fail_to_create_account, Toast.LENGTH_SHORT).show();
                     }
                 });
             }

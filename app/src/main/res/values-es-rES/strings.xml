@@ -59,5 +59,21 @@
     <string name="search_instruction">En la página de búsqueda puede buscar usuarios o recetas específicas</string>
     <string name="top10_instruction">También puedes ver el TOP 10 de recetas que más likes han ganado</string>
     <string name="let_s_start">Empecemos</string>
+    <string name="enter_email">Por favor ingrese el correo electrónico</string>
+    <string name="enter_password">Por favor ingrese contraseña</string>
+    <string name="incorrect">El e-mail o la contraseña son incorrectos</string>
+    <string name="Email_not_valid">Correo electrónico no válido</string>
+    <string name="Password_not_valid">Contraseña no válida</string>
+    <string name="Name_not_valid">Nombre no válido</string>
+    <string name="Image_not_valid">Imagen no válida</string>
+    <string name="User_created_successfully">Usuario creado con éxito</string>
+    <string name="Fail_to_save_picture">Error al guardar la imagen</string>
+    <string name="Fail_to_create_account">Error al crear cuenta</string>
+    <string name="Photo_uploaded_successfully">Foto cargada con éxito</string>
+    <string name="Dish_name_not_valid">Nombre del plato no es válido</string>
+    <string name="Recipe_not_valid">Receta no valida</string>
+    <string name="Ingredients_not_valid">Ingredientes no validos</string>
+    <string name="Post_uploaded_successfully">Publicación cargada con éxito</string>
+
 
 </resources>
