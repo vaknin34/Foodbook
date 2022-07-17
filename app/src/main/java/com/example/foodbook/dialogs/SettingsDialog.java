@@ -12,21 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.foodbook.R;
 import com.example.foodbook.activities.NavActivity;
-import com.example.foodbook.fragments.HomeFragment;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.Locale;
@@ -75,13 +69,13 @@ public class SettingsDialog extends DialogFragment {
 
         Button apply_btn, cancel_btn;
         if (getDialog() == null){
-            apply_btn = getView().findViewById(R.id.apply_btn);
-            cancel_btn = getView().findViewById(R.id.cancel_btn1);
+            apply_btn = getView().findViewById(R.id.first_next_btn);
+            cancel_btn = getView().findViewById(R.id.skip_btn);
         }
         else
         {
-            apply_btn = getDialog().findViewById(R.id.apply_btn);
-            cancel_btn = getDialog().findViewById(R.id.cancel_btn1);
+            apply_btn = getDialog().findViewById(R.id.first_next_btn);
+            cancel_btn = getDialog().findViewById(R.id.skip_btn);
         }
 
         apply_btn.setOnClickListener(v -> {

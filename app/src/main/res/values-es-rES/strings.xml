@@ -50,5 +50,14 @@
     <string name="click_on_dish">Haga clic en el plato</string>
     <string name="click_to_edit">Haz click para editar</string>
     <string name="top_10">TOP 10</string>
+    <string name="welcome_to_foodbook">¡Bienvenido a FoodBook!</string>
+    <string name="this_is_where_you_can_search_for_recipes_and_share_your_own">Aquí es donde puede buscar recetas y compartir las suyas</string>
+    <string name="skip">saltar</string>
+    <string name="next">siguiente</string>
+    <string name="home_instruction">En la página de inicio puedes ver todas las recetas publicadas por los participantes de la app</string>
+    <string name="profile_instruction">En su página de perfil puede ver las recetas que usted mismo publicó</string>
+    <string name="search_instruction">En la página de búsqueda puede buscar usuarios o recetas específicas</string>
+    <string name="top10_instruction">También puedes ver el TOP 10 de recetas que más likes han ganado</string>
+    <string name="let_s_start">Empecemos</string>
 
 </resources>

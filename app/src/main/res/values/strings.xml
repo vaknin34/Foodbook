@@ -49,4 +49,15 @@
     <string name="click_on_dish">Click on dish</string>
     <string name="click_to_edit">Click to edit</string>
     <string name="top_10">TOP 10</string>
+    <string name="welcome_to_foodbook">Welcome To FoodBook!</string>
+    <string name="this_is_where_you_can_search_for_recipes_and_share_your_own">This is where you can search for recipes and share your own</string>
+    <string name="skip">skip</string>
+    <string name="next">next</string>
+    <string name="home_instruction">On the home page you can see all the recipes published by the app participants</string>
+    <string name="profile_instruction">On your profile page you can see the recipes you posted yourself</string>
+    <string name="search_instruction">On the search page you can search for specific users or recipes</string>
+    <string name="top10_instruction">You can also see the TOP 10 recipes that have won the most likes</string>
+    <string name="let_s_start">let\'s start</string>
+
+
 </resources>

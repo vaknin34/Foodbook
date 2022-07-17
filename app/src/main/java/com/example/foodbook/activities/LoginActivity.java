@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
 import com.example.foodbook.databinding.ActivityLoginBinding;
+import com.example.foodbook.dialogs.InstructionDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -35,11 +33,8 @@ public class LoginActivity extends AppCompatActivity {
             edit.putString("firstTime", "no");
             edit.commit();
 
-            new MaterialAlertDialogBuilder(this)
-                    .setTitle("Welcome To FoodBook!")
-                    .setMessage("This is where you can search for recipes and share your own")
-                    .setPositiveButton("Continue", (dialogInterface, i) -> {})
-                    .show();
+            InstructionDialog instructionDialog = new InstructionDialog();
+            instructionDialog.show(getSupportFragmentManager(), "");
         }
 
         firebaseAuth = FirebaseAuth.getInstance();
